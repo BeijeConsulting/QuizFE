@@ -11,7 +11,7 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-
+import { AdminComponent } from '../../admin/admin.component'
 
 import {
   MatButtonModule,
@@ -22,6 +22,11 @@ import {
   MatSelectModule
 } from '@angular/material';
 import { LoginComponent } from 'app/login/login.component';
+import {NewQuestionComponent} from '../../new-question/new-question.component';
+import {UserQuizComponent} from '../../user-quiz/user-quiz.component';
+import {UserActiveComponent} from '../../user-active/user-active.component';
+import {UserCompletedComponent} from '../../user-completed/user-completed.component';
+import {UserComponent} from '../../user/user.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -44,7 +49,13 @@ import { LoginComponent } from 'app/login/login.component';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    LoginComponent
+    LoginComponent,
+    AdminComponent,
+      NewQuestionComponent,
+      UserQuizComponent,
+      UserActiveComponent,
+      UserCompletedComponent,
+      UserComponent
   ]
 })
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SidebarService} from "../sidebar.service";
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sidebarservice: SidebarService) { }
 
   ngOnInit() {
+    this.sidebarservice.updateAdmin(null)
   }
-
+  setLogin(login: boolean): void {
+    this.sidebarservice.updateAdmin(login)
+  }
 }
