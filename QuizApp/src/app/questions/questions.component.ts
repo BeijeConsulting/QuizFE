@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizService } from '../quiz.service'
+import { QuizService } from '../quiz.service';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { Question } from '../mockquestions/question'
+
 
 @Component({
   selector: 'app-questions',
@@ -21,6 +25,11 @@ export class QuestionsComponent implements OnInit {
     this.getquestions();
   }
 
-  getquestions():
+  getquestions(): void {
+
+    const id= +this.route.snapshot.paramMao.get('id');
+    this.quizService.getquestions(id)
+      .subscribe(albums => {this.questions = questions})
+  }
 
 }

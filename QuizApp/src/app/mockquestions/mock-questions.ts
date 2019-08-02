@@ -4,8 +4,8 @@ export const QUESTIONS: Question [] = [
   {
     id: 1,
     tag: [],
-    text: "",
-    answertype: "",
-    answers:"",
+    text: "fff",
+    answertype: "ggg",
+    answers:"si",
   }
 ];
