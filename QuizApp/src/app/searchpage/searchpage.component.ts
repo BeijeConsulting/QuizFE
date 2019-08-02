@@ -12,6 +12,12 @@ export class SearchpageComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
+  search(tag): void {
+
+  }
+
 }
 
 
