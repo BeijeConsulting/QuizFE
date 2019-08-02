@@ -39,8 +39,7 @@ import { QuestionsComponent } from './questions/questions.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    SearchpageComponent,
-    QuestionsComponent,
+  
 
   ],
   providers: [],

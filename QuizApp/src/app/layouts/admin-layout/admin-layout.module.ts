@@ -12,6 +12,7 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 
+
 import {
   MatButtonModule,
   MatInputModule,
@@ -20,6 +21,7 @@ import {
   MatTooltipModule,
   MatSelectModule
 } from '@angular/material';
+import { LoginComponent } from 'app/login/login.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -42,6 +44,7 @@ import {
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    LoginComponent
   ]
 })
 
