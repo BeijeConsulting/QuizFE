@@ -30,16 +30,10 @@
         background-color: #191919;
     }
     .logo-img{
-        width: 35px;
-        display: block;
-        max-height: 30px;
-        margin-left: 13px;
         margin-right: 15px;
 
         img{
-            width: 35px;
-            top: 16px;
-            position: absolute;
+            width: 40px;
         }
     }
     .sidebar-wrapper{
@@ -275,7 +269,9 @@
             line-height: 30px;
             overflow: hidden;
             text-align: center;
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 
