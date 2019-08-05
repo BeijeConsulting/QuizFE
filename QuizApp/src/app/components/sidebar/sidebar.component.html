@@ -56,19 +56,16 @@
   </div>
     <ul class="nav">
         <div *ngIf="getLogin()===true">
-            <li exact routerLinkActive="active" *ngFor="let menuItem of menuItemsA" class="{{menuItem.class}} nav-item">
+            <li  [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" *ngFor="let menuItem of menuItemsA" class="{{menuItem.class}} nav-item">
 
-                <a class="nav-link" [routerLink]="[menuItem.path]" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
-                    true}">
+                <a class="nav-link" [routerLink]="[menuItem.path]">
                     <i class="material-icons">{{menuItem.icon}}</i>
                     <p>{{menuItem.title}}</p>
                 </a>
             </li>
         </div>
         <div *ngIf="getLogin()===false">
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-                true}" *ngFor="let menuItem of menuItemsU" class="{{menuItem.class}} nav-item">
-
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngFor="let menuItem of menuItemsU" class="{{menuItem.class}} nav-item">
                 <a class="nav-link" [routerLink]="[menuItem.path]">
                     <i class="material-icons">{{menuItem.icon}}</i>
                     <p>{{menuItem.title}}</p>

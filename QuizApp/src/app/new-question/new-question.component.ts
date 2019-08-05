@@ -6,9 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-question.component.scss']
 })
 export class NewQuestionComponent implements OnInit {
-
+editor: any = true
   constructor() { }
 
+  setEditor() {
+    this.editor = !this.editor
+  }
   ngOnInit() {
   }
 
