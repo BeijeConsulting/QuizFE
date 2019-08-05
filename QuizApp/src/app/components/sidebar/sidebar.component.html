@@ -55,7 +55,7 @@
     </ul> -->
   </div>
     <ul class="nav">
-        <div *ngIf="getLogin()===true">
+        <div *ngIf="getLogin()===true && getQuiz()===false">
             <li exact routerLinkActive="active" *ngFor="let menuItem of menuItemsA" class="{{menuItem.class}} nav-item">
 
                 <a class="nav-link" [routerLink]="[menuItem.path]" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
@@ -65,7 +65,7 @@
                 </a>
             </li>
         </div>
-        <div *ngIf="getLogin()===false">
+        <div *ngIf="getLogin()===false && getQuiz()===false">
             <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:
                 true}" *ngFor="let menuItem of menuItemsU" class="{{menuItem.class}} nav-item">
 
@@ -75,6 +75,12 @@
                 </a>
             </li>
         </div>
-
+        <div *ngIf="getQuiz()===true">
+            <li *ngFor="let menuItem of menuItemsQ" class="{{menuItem.class}} nav-item">
+                <a class="nav-link" routerLink="/user/quiz/{{menuItem.id}}">
+                    DOMANDA #{{menuItem.id}}
+                </a>
+            </li>
+        </div>
     </ul>
 </div>
