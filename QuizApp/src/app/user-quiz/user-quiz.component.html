@@ -1,3 +1,20 @@
-<div *ngIf="question">
-  {{question.text}}
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="questionBox" *ngIf="question">
+        <div class="question">
+            {{question.text}}
+        </div>
+        <div *ngIf="question.answertype==='checkbox'" class="checkInfo">(*più risposte sono corrette)</div>
+        <div class="answer">
+          <div *ngFor="let answer of question.answers">
+              <input *ngIf="question.answertype==='radio'" type="radio" name="radio" value="answer.value"/>
+              <input *ngIf="question.answertype==='checkbox'" type="checkbox" name="checkbox" value="answer.value" />
+              {{answer.text}}
+          </div>   
+          <textarea *ngIf="question.answertype==='textarea'" name="textarea" rows="10" cols="50" placeholder="Inserisci qui la tua risposta..."></textarea>       
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

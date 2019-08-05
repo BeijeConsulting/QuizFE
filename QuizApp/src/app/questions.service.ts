@@ -8,7 +8,7 @@ import { Question } from './mockquestions/question';
   providedIn: 'root'
 })
 export class QuestionsService {
-
+  thisQuestion : Question;
   questionsUrl = 'api/questions';
 
   constructor(private http: HttpClient) { }

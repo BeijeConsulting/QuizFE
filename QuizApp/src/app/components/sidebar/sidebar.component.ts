@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../../sidebar.service';
 import { QUESTIONS } from '../../mockquestions/mock-questions'
-import { Router, ActivatedRoute } from '@angular/router'
+import { Router } from '@angular/router'
 
 declare const $: any;
 declare interface RouteInfo {
@@ -40,19 +40,17 @@ export const ROUTESA: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
     menuItemsA: any[];
     menuItemsU: any[];
-    menuItemsQ: any[];
+    menuItemsQ= QUESTIONS.filter(menuItemsQ => menuItemsQ);
     admin: boolean = false;
     quiz: boolean = false;
     constructor(
         private sidebarservice: SidebarService,
         private router: Router,
-        private route : ActivatedRoute
     ) { }
 
     ngOnInit() {
         this.menuItemsA = ROUTESA.filter(menuItemsA => menuItemsA);
         this.menuItemsU = ROUTESU.filter(menuItemsU => menuItemsU);
-        this.menuItemsQ = QUESTIONS.filter(menuItemsQ => menuItemsQ);
     }
     getQuiz():boolean {
         this.router.url.indexOf('/user/quiz')===0 ? this.updateQuiz(true) : this.updateQuiz(false);

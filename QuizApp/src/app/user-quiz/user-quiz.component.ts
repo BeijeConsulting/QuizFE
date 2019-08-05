@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Question } from 'app/mockquestions/question';
 import { ActivatedRoute } from '@angular/router';
 import { QuizService } from '../quiz.service'
@@ -10,23 +10,20 @@ import { QuestionsService } from 'app/questions.service';
   styleUrls: ['./user-quiz.component.scss']
 })
 export class UserQuizComponent implements OnInit {
-  @Input() question: Question;
-  id = +this.route.snapshot.paramMap.get('id');
+  question: Question;
   constructor(
     private route: ActivatedRoute,
     private questionsService: QuestionsService
   ) { }
 
   ngOnInit(): void {
-    this.getQuestion();
+    this.route.params.subscribe(routeParams => {
+      this.getQuestion(routeParams.id);
+    });
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    //Add '${implements OnChanges}' to the class.
-    console.log(changes)
-  }
-  getQuestion(): void {
-    this.questionsService.getQuestion(this.id)
+  
+  getQuestion(id : number): void {
+    this.questionsService.getQuestion(id)
       .subscribe(question => this.question = question);
   }
 

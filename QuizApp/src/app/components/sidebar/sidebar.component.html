@@ -1,25 +1,35 @@
 <div class="logo">
     <a [routerLink]="['/']" class="simple-text">
         <div class="logo-img">
-            <img src="/assets/img/angular2-logo-red.png"/>
+            <img src="/assets/img/angular2-logo-red.png" />
         </div>
         Creative Tim
     </a>
 </div>
+<div class="menuSide" *ngIf="getQuiz()===true">
+    <ul>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                    true}" *ngFor="let menuItem of menuItemsQ" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" routerLink="/user/quiz/{{menuItem.id}}">
+                DOMANDA #{{menuItem.id}}
+            </a>
+        </li>
+    </ul>
+</div>
 <div class="sidebar-wrapper">
-  <div *ngIf="isMobileMenu()">
-    <form class="navbar-form">
-      <span class="bmd-form-group">
-        <div class="input-group no-border">
-          <input type="text" value="" class="form-control" placeholder="Search...">
-          <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
-            <i class="material-icons">search</i>
-            <div class="ripple-container"></div>
-          </button>
-        </div>
-      </span>
-    </form>
-    <!-- <ul class="nav navbar-nav nav-mobile-menu">
+    <div *ngIf="isMobileMenu()">
+        <form class="navbar-form">
+            <span class="bmd-form-group">
+                <div class="input-group no-border">
+                    <input type="text" value="" class="form-control" placeholder="Search...">
+                    <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+                        <i class="material-icons">search</i>
+                        <div class="ripple-container"></div>
+                    </button>
+                </div>
+            </span>
+        </form>
+        <!-- <ul class="nav navbar-nav nav-mobile-menu">
         <li class="nav-item">
             <a class="nav-link" href="javascript:void(0)">
                 <i class="material-icons">dashboard</i>
@@ -53,12 +63,13 @@
             </a>
         </li>
     </ul> -->
-  </div>
+    </div>
     <ul class="nav">
         <div *ngIf="getLogin()===true && getQuiz()===false">
             <li exact routerLinkActive="active" *ngFor="let menuItem of menuItemsA" class="{{menuItem.class}} nav-item">
 
-                <a class="nav-link" [routerLink]="[menuItem.path]" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+                <a class="nav-link" [routerLink]="[menuItem.path]" routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{exact:
                     true}">
                     <i class="material-icons">{{menuItem.icon}}</i>
                     <p>{{menuItem.title}}</p>
@@ -75,12 +86,13 @@
                 </a>
             </li>
         </div>
-        <div *ngIf="getQuiz()===true">
-            <li *ngFor="let menuItem of menuItemsQ" class="{{menuItem.class}} nav-item">
+        <!-- <div *ngIf="getQuiz()===true">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                true}" *ngFor="let menuItem of menuItemsQ" class="{{menuItem.class}} nav-item">
                 <a class="nav-link" routerLink="/user/quiz/{{menuItem.id}}">
                     DOMANDA #{{menuItem.id}}
                 </a>
             </li>
-        </div>
+        </div> -->
     </ul>
 </div>
