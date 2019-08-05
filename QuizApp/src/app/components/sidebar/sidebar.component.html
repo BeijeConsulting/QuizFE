@@ -58,7 +58,8 @@
         <div *ngIf="getLogin()===true">
             <li routerLinkActive="active" *ngFor="let menuItem of menuItemsA" class="{{menuItem.class}} nav-item">
 
-                <a class="nav-link" [routerLink]="[menuItem.path]">
+                <a class="nav-link" [routerLink]="[menuItem.path]" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+                    true}">
                     <i class="material-icons">{{menuItem.icon}}</i>
                     <p>{{menuItem.title}}</p>
                 </a>
@@ -67,7 +68,8 @@
         <div *ngIf="getLogin()===false">
             <li routerLinkActive="active" *ngFor="let menuItem of menuItemsU" class="{{menuItem.class}} nav-item">
 
-                <a class="nav-link" [routerLink]="[menuItem.path]">
+                <a class="nav-link" [routerLink]="[menuItem.path]" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+                    true}">
                     <i class="material-icons">{{menuItem.icon}}</i>
                     <p>{{menuItem.title}}</p>
                 </a>
