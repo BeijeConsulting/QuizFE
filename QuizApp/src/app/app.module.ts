@@ -23,6 +23,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { SearchpageComponent } from './searchpage/searchpage.component';
 import { QuestionsComponent } from './questions/questions.component';
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -39,8 +40,11 @@ import { QuestionsComponent } from './questions/questions.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+<<<<<<< HEAD
   
 
+=======
+>>>>>>> origin/master
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,6 +9,12 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { LoginComponent } from '../../login/login.component'
+import {AdminComponent} from "../../admin/admin.component";
+import {NewQuestionComponent} from "../../new-question/new-question.component";
+import {UserComponent} from "../../user/user.component";
+import {UserActiveComponent} from "../../user-active/user-active.component";
+import {UserCompletedComponent} from "../../user-completed/user-completed.component";
+import {UserQuizComponent} from "../../user-quiz/user-quiz.component";
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -62,4 +68,10 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
     { path: 'login',          component: LoginComponent },
+    { path: 'admin', component: AdminComponent },
+    { path: 'admin/new', component: NewQuestionComponent},
+    { path: 'user', component: UserComponent},
+    { path: 'user/active', component: UserActiveComponent},
+    { path: 'user/completed', component: UserCompletedComponent},
+    {path: 'user/quiz', component: UserQuizComponent}
 ];
