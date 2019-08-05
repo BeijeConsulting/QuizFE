@@ -30,26 +30,28 @@ import { InMemoryDataService } from './in-memory-data.service';
 
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ComponentsModule,
-    RouterModule,
-    AppRoutingModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    }),
-    HttpClientInMemoryWebApiModule.forRoot(
-        InMemoryDataService, { dataEncapsulation: false }
-    )
-  ],
-  declarations: [
-    AppComponent,
-    AdminLayoutComponent,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        ComponentsModule,
+        RouterModule,
+        AppRoutingModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+        }),
+        HttpClientInMemoryWebApiModule.forRoot(
+            InMemoryDataService, {dataEncapsulation: false}
+        )
+    ],
+    declarations: [
+        AppComponent,
+        AdminLayoutComponent,
+    ],
+    providers: [],
+    exports: [
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

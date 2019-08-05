@@ -1,0 +1,8 @@
+<div class="InputTextContainer">
+  <div class="InputText">
+    <input #searchTags (input)="search(searchTags.value)" type="text" placeholder="Inserisci tags...">
+    <ul *ngFor="let tag of tags$ | async">
+      <li>{{tag.tag}}</li>
+    </ul>
+  </div>
+</div>

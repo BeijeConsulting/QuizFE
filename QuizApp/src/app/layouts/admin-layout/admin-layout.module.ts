@@ -29,6 +29,7 @@ import {UserQuizComponent} from '../../user-quiz/user-quiz.component';
 import {UserActiveComponent} from '../../user-active/user-active.component';
 import {UserCompletedComponent} from '../../user-completed/user-completed.component';
 import {UserComponent} from '../../user/user.component';
+import {AddtagComponent} from '../../addtag/addtag.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import {UserComponent} from '../../user/user.component';
       UserQuizComponent,
       UserActiveComponent,
       UserCompletedComponent,
-      UserComponent
+      UserComponent,
+      AddtagComponent
   ]
 })
 
