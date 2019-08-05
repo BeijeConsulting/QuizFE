@@ -11,7 +11,9 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-import { AdminComponent } from '../../admin/admin.component'
+import { AdminComponent } from '../../admin/admin.component';
+
+
 
 import {
   MatButtonModule,
@@ -27,6 +29,8 @@ import {UserQuizComponent} from '../../user-quiz/user-quiz.component';
 import {UserActiveComponent} from '../../user-active/user-active.component';
 import {UserCompletedComponent} from '../../user-completed/user-completed.component';
 import {UserComponent} from '../../user/user.component';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -39,6 +43,7 @@ import {UserComponent} from '../../user/user.component';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+
   ],
   declarations: [
     DashboardComponent,
