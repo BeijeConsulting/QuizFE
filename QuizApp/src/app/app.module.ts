@@ -22,6 +22,7 @@ import {AgmCoreModule} from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { SearchpageComponent } from './searchpage/searchpage.component';
 import { QuestionsComponent } from './questions/questions.component';
+import { SearchquestionsComponent } from './searchquestions/searchquestions.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { QuestionsComponent } from './questions/questions.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    SearchquestionsComponent,
 <<<<<<< HEAD
   
 
