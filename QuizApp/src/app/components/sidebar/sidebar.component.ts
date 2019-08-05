@@ -42,7 +42,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.menuItemsA = ROUTESA.filter(menuItemsA => menuItemsA);
-      this.menuItemsU = ROUTESU.filter(menuItemsU => menuItemsU);
+    this.menuItemsU = ROUTESU.filter(menuItemsU => menuItemsU);
   }
 
 
