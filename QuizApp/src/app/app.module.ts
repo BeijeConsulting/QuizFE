@@ -12,6 +12,8 @@ import { AppComponent } from "./app.component";
 
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { InMemoryDataService } from "./in-memory-data.service";
+import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
+
 
 @NgModule({
   imports: [
@@ -26,7 +28,7 @@ import { InMemoryDataService } from "./in-memory-data.service";
       dataEncapsulation: false
     })
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, AdminLayoutComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

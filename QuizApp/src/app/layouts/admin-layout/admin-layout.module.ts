@@ -12,7 +12,7 @@ import { MapsComponent } from "../../maps/maps.component";
 import { NotificationsComponent } from "../../notifications/notifications.component";
 import { UpgradeComponent } from "../../upgrade/upgrade.component";
 import { AdminComponent } from "../../admin/admin.component";
-import { CompletedDetailsComponent } from "../../completed-details/completed-details.component";
+import { Location } from "@angular/common";
 
 import {
   MatButtonModule,
@@ -28,7 +28,7 @@ import { UserQuizComponent } from "../../user-quiz/user-quiz.component";
 import { UserActiveComponent } from "../../user-active/user-active.component";
 import { UserCompletedComponent } from "../../user-completed/user-completed.component";
 import { UserComponent } from "../../user/user.component";
-// import { CompletedDetailsComponent } from "../../complete-details/completed-details.component";
+import { CompletedDetailsComponent } from "../../completed-details/completed-details.component";
 
 @NgModule({
   imports: [

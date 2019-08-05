@@ -1,15 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-
-declare interface RouteInfo {
-  path: string;
-  title: string;
-  icon: string;
-  class: string;
-}
-
-export const ROUTE: RouteInfo[] = [
-  { path: "/user/completed/1", title: "detailscompleted", icon: "", class: "" }
-];
+import { Question } from "../mockquestions/question";
+import { QuestionsService } from "app/questions.service";
+import { ActivatedRoute } from "@angular/router";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-user-completed",
@@ -17,7 +10,22 @@ export const ROUTE: RouteInfo[] = [
   styleUrls: ["./user-completed.component.scss"]
 })
 export class UserCompletedComponent implements OnInit {
-  constructor() {}
+  questions: Question[];
 
-  ngOnInit() {}
+  constructor(
+    private questionService: QuestionsService,
+    private location: Location,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.getQuestions();
+  }
+
+  getQuestions(): void {
+    this.questionService.getQuestions().subscribe(questions => {
+      this.questions = questions;
+      console.log(this.questions);
+    });
+  }
 }

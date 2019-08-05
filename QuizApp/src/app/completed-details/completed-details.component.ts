@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-// import { ActivatedRouter } from " @angular/router";
+import { ActivatedRoute } from "@angular/router";
+import { Question } from "app/mockquestions/question";
+import { QuestionsService } from "app/questions.service";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-completed-details",
@@ -7,7 +10,21 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./completed-details.component.scss"]
 })
 export class CompletedDetailsComponent implements OnInit {
-  constructor() {}
+  questions: Question;
+  constructor(
+    private questionsService: QuestionsService,
+    private location: Location,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    this.getQuestion();
+  }
+
+  getQuestion(): void {
+    const id = +this.route.snapshot.paramMap.get("id");
+    this.questionsService
+      .getQuestion(id)
+      .subscribe(question => (this.questions = question));
+  }
 }

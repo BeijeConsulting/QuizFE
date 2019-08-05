@@ -18,52 +18,21 @@
   </thead>
 
   <tbody>
-    <tr>
+    <tr *ngFor="let question of questions" routerLink="/user/completed/1">
       <td class="text-center">1</td>
-
-      <a routerLink="/user/completed/1"><th>Quiz 1</th></a>
-      <td>Java</td>
-      <td>45/50</td>
-      <!-- <td class="td-actions text-right">
-        <button type="button" rel="tooltip" class="btn btn-info">
-          <i class="material-icons">person</i>
-        </button>
-        <button type="button" rel="tooltip" class="btn btn-success">
-          <i class="material-icons">edit</i>
-        </button>
-      </td> -->
-    </tr>
-
-    <tr>
-      <td class="text-center">2</td>
-      <th>Quiz 1</th>
-
-      <td>Java</td>
-      <td>60/75</td>
-      <!-- <td class="td-actions text-right">
-        <button type="button" rel="tooltip" class="btn btn-info btn-round">
-          <i class="material-icons">person</i>
-        </button>
-        <button type="button" rel="tooltip" class="btn btn-success btn-round">
-          <i class="material-icons">edit</i>
-        </button>
-      </td> -->
-    </tr>
-
-    <tr>
-      <td class="text-center">3</td>
-      <th>Quiz 1</th>
-
-      <td>Java</td>
-      <td>60/60</td>
-      <!-- <td class="td-actions text-right">
-        <button type="button" rel="tooltip" class="btn btn-info btn-simple">
-          <i class="material-icons">person</i>
-        </button>
-        <button type="button" rel="tooltip" class="btn btn-success btn-simple">
-          <i class="material-icons">edit</i>
-        </button>
-      </td> -->
+      <th>
+        {{ question.id }}
+      </th>
+      <td>{{ question.tag }}</td>
+      <td>56566</td>
     </tr>
   </tbody>
 </table>
+
+<ul>
+  <li *ngFor="let user of users">
+    <a routerLink="/detail/{{ user.id }}">
+      <span>{{ user.id }}</span> {{ user.name }}
+    </a>
+  </li>
+</ul>
