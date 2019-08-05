@@ -1,12 +1,7 @@
-<h6>
-  angular@{{ angularVersion }} | ngx-markdown@{{ ngxMarkdownVersion }}
-</h6>
-<br>
-<button (click)="setEditor()" class="btn btn-primary btn-round">Toggle editor</button>
-<div *ngIf="editor" class="domandaeditor">
-  <textarea class="variable-textarea" [(ngModel)]="markdown"></textarea>
-</div>
-<div *ngIf="!editor" class="domandalive">
-  <markdown class="variable-binding" [data]="markdown"></markdown>
-</div>
+<br><br><br>
+<p>
+    Qui ci va un altro pezzo di codicio
+</p>
 
+<app-new-question-text></app-new-question-text>
+<app-new-question-answers></app-new-question-answers>

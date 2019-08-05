@@ -28,6 +28,9 @@ import {UserQuizComponent} from '../../user-quiz/user-quiz.component';
 import {UserActiveComponent} from '../../user-active/user-active.component';
 import {UserCompletedComponent} from '../../user-completed/user-completed.component';
 import {UserComponent} from '../../user/user.component';
+import { NewQuestionTextComponent } from 'app/new-question-text/new-question-text.component';
+import { NewQuestionAnswersComponent } from 'app/new-question-answers/new-question-answers.component'
+import { NewQuestionAnswerInputsComponent } from 'app/new-question-answer-inputs/new-question-answer-inputs.component'
 @NgModule({
   imports: [
     CommonModule,
@@ -58,7 +61,10 @@ import {UserComponent} from '../../user/user.component';
       UserQuizComponent,
       UserActiveComponent,
       UserCompletedComponent,
-      UserComponent
+      UserComponent,
+      NewQuestionTextComponent,
+      NewQuestionAnswersComponent,
+      NewQuestionAnswerInputsComponent
   ]
 })
 

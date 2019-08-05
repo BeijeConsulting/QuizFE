@@ -48,7 +48,6 @@ export class SidebarComponent implements OnInit {
 
   getLogin() {
       this.admin = this.sidebarservice.getLogin()
-      console.log(this.admin)
       return this.admin
   }
   isMobileMenu() {

@@ -1,0 +1,6 @@
+<div>
+  <form>
+    <span *ngIf="answer==='radio';else check"><input type="radio"><input type="text"></span>
+    <ng-template #check><input type="checkbox"><input type="text"></ng-template>
+  </form>
+</div>
