@@ -1,47 +1,55 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Question } from 'app/mockquestions/question';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-
-
-
-
+import { Question } from './mockquestions/question';
+import { QUESTIONS } from './mockquestions/mock-questions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
-  private questionUrl = 'api/question'; 
-
   constructor(
-    private http: HttpClient
   ) { }
+  answers: answerQuiz[] = [];
 
-  getQuestion(id: number): Observable<Question> {
-    const url = `${this.questionUrl}/${id}`;
-    return this.http.get<Question>(url).pipe(
-      tap(_ => console.log(`fetched question id=${id}`)),
-      catchError(this.handleError<Question>(`getQuestion id=${id}`))
-    );
+  getQuiz(){
+    return this.answers;
   }
-
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+  add(answer: answerQuiz) {
+    let index = null;
+    if (!answer.textarea){
+      index = this.answers.indexOf(this.answers.filter(item=>item.id===answer.id&& !item.textarea)[0])
+      index===-1 ? this.answers.push(answer) : this.answers[index]=answer
+    }
+  }
+  addArea(answer: answerQuiz) {
+    let index = this.answers.indexOf(this.answers.filter(item=>item.id===answer.id)[0])
+    index===-1 ? this.answers.push(answer) : this.answers[index]=answer
+  }
+  getAnswer(id:number,value:string) {
+    let correct = false;
+    let question = this.answers.filter(answer=>answer.id===id);
+    question.length>0 ? question[0].answerValue.map(item=>item===value ? correct=true : correct=correct) : false
+    return correct;
+  }
+  getAnswerArea(id:number){
+    let area="";
+    let question = this.answers.filter(answer=>answer.id===id);
+    question.length>0 ? question[0].answerValue.map(item=>area=item) : area="";
+    return area;
+  }
+  clear() {
+    this.answers = [];
+  }
+  getQuestion(id: number): Question {
+    return QUESTIONS.filter(item=>item.id===id)[0];
+  }
+  getTotQuestions(){
+    return QUESTIONS.length;
   }
 }
+
+export class answerQuiz {
+  id: number;
+  textarea: boolean;
+  answerValue: string[];
+}
+
