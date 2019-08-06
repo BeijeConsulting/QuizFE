@@ -1,14 +1,30 @@
-<div class="InputTextContainer">
-  <div class="InputText">
-    <ul *ngIf="newtags"><li *ngFor="let newtag of newtags">{{newtag}} <button (click)="deleteTag(newtag)">X</button></li> </ul>
-    <input [(ngModel)]="tagAdded"
-           (input)="search(tagAdded.toLowerCase())"
-           type="text" placeholder="Inserisci tags..."
-            (keyup)="addNewTag(tagAdded.toLowerCase(), $event);">
-    <ul *ngIf="tagAdded">
-      <li *ngFor="let tag of searchedTags" (click)="selectTag(tag); tagAdded=''">{{tag}}</li>
-
-    </ul>
-  </div>
+<div class="MainContainer">
+    <div class="header">
+        <div class="header__title">
+            Inserimento Tag
+        </div>
+    </div>
+    <div class="middle-content">
+        <div class="Aggiunti"> Tag Aggiunti</div>
+    </div>
+    <div class="InputText">
+        <div class="InputText__Aggiunti">
+            <div class="NuoviTags" *ngIf="newtags">
+                <div *ngFor="let newtag of newtags">
+                    {{newtag}} &ensp;
+                    <button (click)="deleteTag(newtag)">✖</button>
+                </div>
+            </div>
+        </div>
+        <div class="InputText__InputField">
+            <ul class="DefaultTags" *ngIf="tagAdded">
+                <li *ngFor="let tag of searchedTags" (click)="selectTag(tag); tagAdded=''">{{tag}}</li>
+            </ul>
+            <input [(ngModel)]="tagAdded"
+                   (input)="search(tagAdded.toLowerCase())"
+                   type="text" placeholder="Inserisci tags..."
+                   (keyup)="addNewTag(tagAdded.toLowerCase(), $event);">
+        </div>
+    </div>
 </div>
 

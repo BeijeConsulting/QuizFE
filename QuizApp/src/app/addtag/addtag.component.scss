@@ -1,0 +1,110 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+.MainContainer {
+  width: 370px;
+  height: 380px;
+  background-color: #fff;
+  border: none;
+  border-radius: 8px;
+  margin: 16px;
+  margin-bottom: 100px;
+  -webkit-box-shadow: -7px 0px 48px -30px rgba(0,0,0,1);
+  -moz-box-shadow: -7px 0px 48px -30px rgba(0,0,0,1);
+  box-shadow: -7px 0px 48px -30px rgba(0,0,0,1);
+}
+.header{
+  margin-bottom: 8px;
+  height: 10%;
+  background-color: #00b9f1 ;
+  border: none;
+  border-radius: 8px 8px 0px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header__title {
+  color: white;
+  font-weight: bold;
+}
+.middle-content {
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+}
+.InputText {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: calc(90% - 58px);
+}
+.InputText__Aggiunti {
+  position: relative;
+  display: flex;
+  height: 90%;
+  overflow: auto;
+}
+.InputText__InputField {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 370px;
+}
+.NuoviTags {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+
+.NuoviTags > div {
+  display: flex;
+  padding: 8px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  background-color: #0c83e2;
+  color: #fff;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.NuoviTags > div > button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: white;
+  margin-left: 10px;
+
+}
+
+input {
+  border: 1px solid lightgrey;
+  padding: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  width: 100%;
+}
+
+.DefaultTags {
+  list-style: none;
+  z-index: 20;
+}
+
+.DefaultTags > li {
+  padding: 6px;
+  font-weight: 600;
+  width: 100%;
+  border-top: 1px solid grey;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.DefaultTags > li:hover {
+  background-color: #f4f4f4;
+  z-index: 20;
+}
+
+
