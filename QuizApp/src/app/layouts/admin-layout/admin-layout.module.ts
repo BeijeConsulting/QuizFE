@@ -44,6 +44,7 @@ import { NewQuestionAnswerInputsComponent } from 'app/new-question-answer-inputs
     MatSelectModule,
     MatTooltipModule,
     MarkdownModule.forRoot(),
+    ReactiveFormsModule
     
   ],
   declarations: [

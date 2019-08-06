@@ -1,6 +1,33 @@
-<div>
-  <form>
-    <span *ngIf="answer==='radio';else check"><input type="radio"><input type="text"></span>
-    <ng-template #check><input type="checkbox"><input type="text"></ng-template>
-  </form>
-</div>
+
+<form [formGroup]="Form" class="form-check form-check-radio">
+  <div formArrayName="input">
+    <div *ngFor="let address of input.controls; let i=index">
+      <span *ngIf="answer==='radio'; else check">    
+        <input type="radio" [formControlName]="i" id="i" (change)="resetRadio(i)" [checked]="isCheck(i)?'checked':null">
+      <span>
+        <input type="text" [formControlName]="i">
+      </span>
+      <span *ngIf="i>1">
+        <button (click)="delInput(i)">X</button>
+      </span>
+    </span>
+      <ng-template #check>
+          <input type="checkbox" [formControlName]="i">
+        <span>
+          <input type="text" [formControlName]="i">
+        </span>
+        <span *ngIf="i>1">
+            <button (click)="delInput(i)" class="btn btn-danger">X</button>
+          </span>
+      </ng-template>
+      
+    </div>
+  </div>
+  <button (click)="addInput()" class="btn btn-primary">Aggiungi risposta</button>
+  <button (click)="prova()">Stato</button>
+</form>
+{{Form.input}}
+
+
+
+
