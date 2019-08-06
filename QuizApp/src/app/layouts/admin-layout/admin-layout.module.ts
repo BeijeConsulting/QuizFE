@@ -31,6 +31,9 @@ import {UserComponent} from '../../user/user.component';
 import { NewQuestionTextComponent } from 'app/new-question-text/new-question-text.component';
 import { NewQuestionAnswersComponent } from 'app/new-question-answers/new-question-answers.component'
 import { NewQuestionAnswerInputsComponent } from 'app/new-question-answer-inputs/new-question-answer-inputs.component'
+import {AddtagComponent} from '../../addtag/addtag.component';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -65,7 +68,8 @@ import { NewQuestionAnswerInputsComponent } from 'app/new-question-answer-inputs
       UserComponent,
       NewQuestionTextComponent,
       NewQuestionAnswersComponent,
-      NewQuestionAnswerInputsComponent
+      NewQuestionAnswerInputsComponent,
+      AddtagComponent
   ]
 })
 
