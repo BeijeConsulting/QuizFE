@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import { QuestionsService} from '../questions.service';
 import {Question} from '../mockquestions/question';
 import {Observable, Subject} from 'rxjs';
@@ -9,30 +9,50 @@ import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
   templateUrl: './addtag.component.html',
   styleUrls: ['./addtag.component.scss']
 })
+
 export class AddtagComponent implements OnInit {
+  @Input() tagAdded;
   questions: Question[];
+  newtags: string[] = [];
   tags: string[];
-  tags$: Observable<string[]>;
-  private searchTerms = new Subject<string>();
+  searchedTags: string[];
   constructor(private qs: QuestionsService) { }
 
   ngOnInit() {
     this.getTags();
-    this.tags$ = this.searchTerms.pipe(
-        // wait 300ms after each keystroke before considering the term
-        debounceTime(300),
-
-        // ignore new term if same as previous term
-        distinctUntilChanged(),
-
-        // switch to new search observable each time the term changes
-        switchMap((term: string) => this.qs.searchTag(term)),
-    );
   }
+
   getTags(): void {
-    this.qs.getTags().subscribe(res => this.tags = res);
+    this.qs.getTags().subscribe(res => this.tags = res.filter((el) => !this.newtags.includes(el)))
   }
   search(term: string): void {
-    this.searchTerms.next(term)
+    if (this.tags) {
+      this.searchedTags = this.tags.filter((el) => el.indexOf(term) !== -1);
+    }
+    console.log(this.tagAdded)
   }
+  addNewTag(newTag: string, e: KeyboardEvent) {
+   if (e.code === 'Space' || e.code === 'Enter') {
+      newTag = newTag.replace(/[^a-z0-9]/gi,'');
+     if (newTag && !this.newtags.includes(newTag)) {
+        this.newtags.push(newTag);
+        this.getTags();
+      }
+     this.tagAdded = '';
+    }
+  }
+
+  selectTag(defaultTag: string) {
+    this.newtags.push(defaultTag);
+    this.search('');
+    this.getTags();
+  }
+
+  deleteTag (tag) {
+    const index = this.newtags.indexOf(tag);
+    this.newtags.splice(index, 1);
+    this.getTags();
+  }
+
+
 }

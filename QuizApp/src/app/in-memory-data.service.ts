@@ -8,19 +8,12 @@ import { Question } from './mockquestions/question';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const tags = [
-      {tag: 'animali'},
-      {tag: 'natura'},
-      {tag: 'politica'},
-      {tag: 'colore'},
-      {tag: 'gossip'},
-    ]
-  //   const tags = [
-  //     'animali',
-  //     'natura',
-  //     'politica',
-  //     'colore',
-  //     'gossip',
-  // ];
+      'animali',
+      'natura',
+      'politica',
+      'colore',
+      'gossip',
+    ];
     const questions = [
       {
         id: 1,
