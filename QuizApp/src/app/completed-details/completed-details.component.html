@@ -11,32 +11,74 @@
   <thead>
     <tr>
       <th class="text-center"></th>
-      <th>Domande</th>
-      <th>risposta</th>
+      <th>Quiz</th>
+      <th>tags</th>
+      <th>results</th>
     </tr>
   </thead>
 
   <tbody>
-    <tr>
+    <tr
+      *ngFor="let question of questions"
+      routerLink="/user/completed/{{ question.id }}"
+    >
       <td class="text-center">1</td>
-
-      <a routerLink="/user/completed/1"><th>DOMANDA #1</th></a>
-      <td>
+      <th>
+        {{ question.id }}
+      </th>
+      <td>{{ question.tag }}</td>
+      <td
+        *ngIf="
+          getQuestion(question.id).toString() ===
+            getRisposta(question.id).toString();
+          else no
+        "
+      >
         <button type="button" rel="tooltip" class="btn btn-info">
           <i class="material-icons">done</i>
         </button>
       </td>
+
+      <ng-template #no
+        ><td>
+          <button type="button" rel="tooltip" class="btn btn-success">
+            <i class="material-icons">clear</i>
+          </button>
+        </td></ng-template
+      >
     </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td class="text-center">2</td>
-      <th>DOMANDA #2</th>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
-      <td>
-        <button type="button" rel="tooltip" class="btn btn-success">
-          <i class="material-icons">clear</i>
-        </button>
-      </td>
+<table class="table">
+  <thead>
+    <tr
+      *ngFor="let question of questions"
+      routerLink="/user/completed/{{ question.id }}"
+    >
+      <th class="text-center"></th>
+      <th>Quiz</th>
+      <th>tags</th>
+      <th>results</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let risposta of risposte">
+      <td class="text-center">1</td>
+      <th>
+        sdfgsds
+      </th>
+      <td>fdgdfgdfg</td>
     </tr>
   </tbody>
 </table>
