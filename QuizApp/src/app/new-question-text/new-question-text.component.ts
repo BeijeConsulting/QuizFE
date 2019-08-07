@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QuestionSenderService } from '../question-sender.service'
 
 @Component({
   selector: 'app-new-question-text',

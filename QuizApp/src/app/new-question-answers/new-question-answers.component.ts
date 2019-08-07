@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QuestionSenderService } from '../question-sender.service'
 
 @Component({
   selector: 'app-new-question-answers',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewQuestionAnswersComponent implements OnInit {
 answertype: string = 'radio'
+answervalue: string
+
   constructor() { }
 
 
@@ -14,8 +17,16 @@ answertype: string = 'radio'
   ngOnInit() {
   }
 
-onChange(val): void {
+onChange(val: string): void {
   this.answertype = val
   console.log(this.answertype === 'radio')
+}
+
+valueDef(val: string): void {
+  if (val === 'alfabeto') {
+    this.answervalue = 'a'
+  } else {
+    this.answervalue = '1'
+  }
 }
 }
