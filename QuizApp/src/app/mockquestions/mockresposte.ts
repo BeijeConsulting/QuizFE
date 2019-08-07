@@ -8,19 +8,23 @@ export const COMPLETEDQUIZ: completedQuiz[] = [
     answersuser: [
       {
         id: 1,
-        answer: ["a"]
+        answer: ["a"],
+        correct: ["a"]
       },
       {
         id: 2,
-        answer: ["c"]
+        answer: ["c"],
+        correct: ["c"]
       },
       {
         id: 3,
-        answer: ["d"]
+        answer: ["d"],
+        correct: ["a"]
       },
       {
         id: 4,
-        answer: ["c"]
+        answer: ["c"],
+        correct: ["b"]
       }
     ]
   },
@@ -31,27 +35,33 @@ export const COMPLETEDQUIZ: completedQuiz[] = [
     answersuser: [
       {
         id: 5,
-        answer: ["a"]
+        answer: ["a"],
+        correct: ["a"]
       },
       {
         id: 6,
-        answer: ["b"]
+        answer: ["b"],
+        correct: ["b", "d"]
       },
       {
         id: 7,
-        answer: ["b"]
+        answer: ["a"],
+        correct: ["a"]
       },
       {
         id: 8,
-        answer: ["a"]
+        answer: ["a"],
+        correct: ["a", "e"]
       },
       {
         id: 9,
-        answer: ["a"]
+        answer: ["a"],
+        correct: ["b"]
       },
       {
         id: 10,
-        answer: ["c"]
+        answer: ["b"],
+        correct: ["b"]
       }
     ]
   }

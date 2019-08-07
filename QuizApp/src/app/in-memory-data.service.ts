@@ -1,58 +1,14 @@
 import { Injectable } from "@angular/core";
 import { InMemoryDbService } from "angular-in-memory-web-api";
 import { Question } from "./mockquestions/question";
+import { COMPLETEDQUIZ } from "./mockquestions/mockresposte";
 
 @Injectable({
   providedIn: "root"
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const risposte = [
-      {
-        id: 1,
-        answers: ["a"]
-      },
-      {
-        id: 2,
-        answers: ["c"]
-      },
-      {
-        id: 3,
-        answers: ["d"]
-      },
-      {
-        id: 4,
-        answers: ["c"]
-      },
-      {
-        id: 5,
-        answers: ["a"]
-      },
-      {
-        id: 6,
-        answers: ["b"]
-      },
-      {
-        id: 7,
-        answers: ["b"]
-      },
-      {
-        id: 8,
-        answers: ["a"]
-      },
-      {
-        id: 9,
-        answers: ["a"]
-      },
-      {
-        id: 10,
-        answers: ["c"]
-      },
-      {
-        id: 11,
-        answers: []
-      }
-    ];
+    const risposte = COMPLETEDQUIZ;
 
     const questions = [
       {

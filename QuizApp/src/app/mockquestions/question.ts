@@ -27,4 +27,5 @@ export class completedQuiz {
 export class Answersuser {
   id: number;
   answer: string[];
+  correct: string[];
 }

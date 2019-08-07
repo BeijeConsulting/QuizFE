@@ -74,6 +74,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: "user", component: UserComponent },
   { path: "user/active", component: UserActiveComponent },
   { path: "user/completed", component: UserCompletedComponent },
-  { path: "user/completed/1", component: CompletedDetailsComponent },
+  { path: "user/completed/:id", component: CompletedDetailsComponent },
   { path: "user/quiz", component: UserQuizComponent }
 ];

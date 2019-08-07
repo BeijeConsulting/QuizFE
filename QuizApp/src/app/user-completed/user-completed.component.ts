@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Question } from "../mockquestions/question";
 import { QuestionsService } from "app/questions.service";
-import { ActivatedRoute } from "@angular/router";
-import { Location } from "@angular/common";
 import { completedQuiz } from "../mockquestions/question";
 import { RisposteService } from "app/risposte.service";
 
@@ -13,13 +11,11 @@ import { RisposteService } from "app/risposte.service";
 })
 export class UserCompletedComponent implements OnInit {
   questions: Question[];
-  quiz: completedQuiz[] = [];
+  quizTot: completedQuiz[] = [];
 
   constructor(
     private questionService: QuestionsService,
-    private risposteService: RisposteService,
-    private location: Location,
-    private route: ActivatedRoute
+    private risposteService: RisposteService
   ) {}
 
   ngOnInit() {
@@ -36,7 +32,7 @@ export class UserCompletedComponent implements OnInit {
 
   getRisposte(): void {
     this.risposteService.getRisposte().subscribe(risposte => {
-      this.quiz = risposte;
+      this.quizTot = risposte;
     });
   }
 
@@ -49,16 +45,16 @@ export class UserCompletedComponent implements OnInit {
           )
         : null
     );
-    // console.log("quest: ", correct);
+    console.log("quest: ", correct);
     return correct;
   }
 
   getQuiz(id: number) {
     let correctuser: any[] = [];
-    this.quiz.map(risposte =>
+    this.quizTot.map(risposte =>
       risposte.id === id ? correctuser.push(risposte.id) : null
     );
-    // console.log("quest: ", correctuser);
+    console.log("quest: ", correctuser);
 
     return correctuser;
   }

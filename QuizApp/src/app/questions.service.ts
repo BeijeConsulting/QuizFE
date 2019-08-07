@@ -18,9 +18,4 @@ export class QuestionsService {
     const url = `${this.questionsUrl}/${id}`;
     return this.http.get<Question>(url);
   }
-
-  // getAnswers() {
-  //   let lengthquiz = Object.keys(Question).length;
-  //   console.log("barapappa", lengthquiz);
-  // }
 }

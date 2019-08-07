@@ -7,49 +7,35 @@
 <br />
 <br />
 
-<table class="table">
-  <thead>
-    <tr>
-      <th class="text-center"></th>
-      <th>Quiz</th>
-      <th>data</th>
-      <th>tags</th>
-      <th>totale</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr
-      *ngFor="let risposte of risposte"
-      routerLink="/user/completed/{{ question.id }}"
-    >
-      <td class="text-center">1</td>
-      <th>
-        {{ risposte.id }}
-      </th>
-      <td>{{ risposte.tag }}</td>
-      <!-- <td
-        *ngIf="
-          getQuestion(question.id).toString() ===
-            getRisposta(question.id).toString();
-          else no
-        "
-      >
-        <button type="button" rel="tooltip" class="btn btn-info">
-          <i class="material-icons">done</i>
-        </button>
-      </td>
-
-      <ng-template #no
-        ><td>
-          <button type="button" rel="tooltip" class="btn btn-success">
-            <i class="material-icons">clear</i>
-          </button>
-        </td></ng-template
-      > -->
-    </tr>
-  </tbody>
-</table>
+<div class="card table">
+  <div class="card-header card-header-warning">
+    <h4 class="card-title">Quiz completati</h4>
+    <p class="card-category">
+      Questa è una lista di tutti i quiz che sono stati completati
+    </p>
+  </div>
+  <div class="card-content table-responsive table-full-width">
+    <table class="table">
+      <thead class="text-danger">
+        <th>Quiz</th>
+        <th>Data</th>
+        <th>Tags</th>
+        <th>Risposte</th>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let quiz of quizTot"
+          routerLink="/user/completed/{{ quiz.id }}"
+        >
+          <td>{{ quiz.id }}</td>
+          <td>{{ quiz.data }}</td>
+          <td>{{ quiz.tag }}</td>
+          <td class="text-danger">5/8</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <!-- <table class="table">
   <thead>

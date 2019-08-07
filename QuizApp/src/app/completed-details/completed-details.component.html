@@ -6,8 +6,41 @@
 <br />
 <br />
 <br />
-
-<table class="table">
+<div class="card table">
+  <div class="card-header card-header-warning">
+    <h4 class="card-title">Quiz completati</h4>
+    <p class="card-category">
+      Questa è una lista di tutti i quiz che sono stati completati
+    </p>
+  </div>
+  <div class="card-content table-responsive table-full-width">
+    <table class="table">
+      <thead class="text-danger">
+        <th>Domanda</th>
+        <th>Tag</th>
+        <th>Corretta</th>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let domande of quiz.answersuser"
+          routerLink="/user/completed/{{ quiz.id }}"
+        >
+          <td>{{ domande.id }}</td>
+          <td>{{ quiz.tag }}</td>
+          <td *ngIf="getCorrect(domande.id); else no">
+            <i class="material-icons">done</i>
+          </td>
+          <ng-template #no
+            ><td>
+              <i class="material-icons">clear</i>
+            </td></ng-template
+          >
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- <table class="table">
   <thead>
     <tr>
       <th class="text-center"></th>
@@ -19,14 +52,14 @@
 
   <tbody>
     <tr
-      *ngFor="let question of questions"
+      *ngFor="let domande of quiz"
       routerLink="/user/completed/{{ question.id }}"
     >
       <td class="text-center">1</td>
       <th>
-        {{ question.id }}
+        {{ domande.id }}
       </th>
-      <td>{{ question.tag }}</td>
+      <td>{{ domande.tag }}</td>
       <td
         *ngIf="
           getQuestion(question.id).toString() ===
@@ -81,4 +114,4 @@
       <td>fdgdfgdfg</td>
     </tr>
   </tbody>
-</table>
+</table> -->
