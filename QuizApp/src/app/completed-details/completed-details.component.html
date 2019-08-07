@@ -9,17 +9,22 @@
     <div class="card-content table-responsive table-full-width">
       <table class="table">
         <thead class="text-danger">
-          <th>Quiz</th>
-          <th>Data</th>
-          <th>Tags</th>
-          <th>Risposte</th>
+          <th>Domanda</th>
+          <th>Tag</th>
+          <th>Corretta</th>
         </thead>
-        <tbody>
-          <tr *ngFor="let quiz of quizTot" routerLink="/user/completed/{{ quiz.id }}">
-            <td>{{ quiz.id }}</td>
-            <td>{{ quiz.data }}</td>
+        <tbody *ngIf="quiz">
+          <tr *ngFor="let domande of quiz.answersuser" routerLink="/user/completed/{{ quiz.id }}">
+            <td>{{ domande.id }}</td>
             <td>{{ quiz.tag }}</td>
-            <td class="text-danger">5/8</td>
+            <td *ngIf="getCorrect(domande.id); else no">
+              <i class="material-icons">done</i>
+            </td>
+            <ng-template #no>
+              <td>
+                <i class="material-icons">clear</i>
+              </td>
+            </ng-template>
           </tr>
         </tbody>
       </table>

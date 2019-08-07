@@ -1,3 +1,46 @@
-<p>
-  user-quiz works!
-</p>
+<div class="main-content-quiz">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="questionBox" *ngIf="!question">
+        <div class="question">
+          Stai per affrontare un quiz di cultura generale.<br><br>
+          Sei pronto?
+          <br><br><br>
+          <button class="btn btn-success" [routerLink]="['/user/quiz/1']">INIZIA IL QUIZ</button>
+        </div>
+      </div>
+      <div class="questionBox" *ngIf="question">
+        <div class="question">
+          {{question.text}}
+        </div>
+        <div *ngIf="question.answertype==='checkbox'" class="checkInfo">(*più risposte sono corrette)</div>
+        <div class="answer">
+          <div *ngFor="let answer of question.answers;">
+            <label>
+              <input *ngIf="question.answertype==='radio'" (change)="addAnswer(question.id)" type="radio" name="answer"
+                value="{{answer.value}}" [attr.checked]="getAnswer(question.id,answer.value) ? 'checked':null" />
+              <input *ngIf="question.answertype==='checkbox'" (change)="addAnswer(question.id)" type="checkbox" name="answer" 
+                value="{{answer.value}}" [attr.checked]="getAnswer(question.id,answer.value) ? 'checked':null" />
+              {{answer.text}}
+            </label>
+          </div>
+          <textarea *ngIf="question.answertype==='textarea'" id="textarea" (change)="addAnswerArea(question.id)" name="textarea" rows="10" cols="50"
+            placeholder="Inserisci qui la tua risposta...">{{getDefaultArea(question.id)}}</textarea>
+        </div>
+        <div class="button-quiz">
+          <div class="btn-prev">
+            <button *ngIf="question.id>1" class="btn btn-info" (click)="addAnswer(question.id)"
+              routerLink="/user/quiz/{{question.id-1}}">PRECEDENTE</button>
+          </div>
+          <div class="btn-next">
+            <button *ngIf="question.id<getTotQuestions()" class="btn btn-info" (click)="addAnswer(question.id)"
+              routerLink="/user/quiz/{{question.id+1}}">SUCCESSIVA</button>
+          </div>
+        </div>
+        <div class="button-submit">
+              <button *ngIf="question.id===getTotQuestions()" class="btn btn-success" (click)="clear()" >INVIA QUIZ</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

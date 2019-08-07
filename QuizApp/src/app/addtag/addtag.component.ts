@@ -29,13 +29,14 @@ export class AddtagComponent implements OnInit {
   getTags(): void {
     this.qs.getTags().subscribe(res => this.tags = res.filter((el) => !this.newtags.includes(el)))
   }
-  search(term: string): void {
+  search(): void {
     if (this.tags) {
-      this.searchedTags = this.tags.filter((el) => el.indexOf(term) !== -1);
+      this.searchedTags = this.tags.filter((el) => el.indexOf(this.tagAdded) !== -1);
     }
     console.log(this.tagAdded)
   }
-  addNewTag(newTag: string, e: KeyboardEvent) {
+  addNewTag(e: KeyboardEvent) {
+    let newTag= this.tagAdded;
    if (e.code === 'Space' || e.code === 'Enter') {
       newTag = newTag.replace(/[^a-z0-9]/gi,'');
      if (newTag && !this.newtags.includes(newTag)) {
@@ -49,8 +50,7 @@ export class AddtagComponent implements OnInit {
 
   selectTag(defaultTag: string) {
     this.newtags.push(defaultTag);
-    this.loadTag()
-    this.search('');
+    this.loadTag();
     this.getTags();
   }
 

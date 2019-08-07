@@ -21,18 +21,18 @@ import {
   MatFormFieldModule,
   MatTooltipModule,
   MatSelectModule
-} from '@angular/material';
-import { LoginComponent } from 'app/login/login.component';
-import {NewQuestionComponent} from '../../new-question/new-question.component';
-import {UserQuizComponent} from '../../user-quiz/user-quiz.component';
-import {UserActiveComponent} from '../../user-active/user-active.component';
-import {UserCompletedComponent} from '../../user-completed/user-completed.component';
-import {UserComponent} from '../../user/user.component';
+} from "@angular/material";
+import { LoginComponent } from "app/login/login.component";
+import { NewQuestionComponent } from "../../new-question/new-question.component";
+import { UserQuizComponent } from "../../user-quiz/user-quiz.component";
+import { UserActiveComponent } from "../../user-active/user-active.component";
+import { UserCompletedComponent } from "../../user-completed/user-completed.component";
+import { UserComponent } from "../../user/user.component";
+import { CompletedDetailsComponent } from "../../completed-details/completed-details.component";
 import { NewQuestionTextComponent } from 'app/new-question-text/new-question-text.component';
 import { NewQuestionAnswersComponent } from 'app/new-question-answers/new-question-answers.component'
 import { NewQuestionAnswerInputsComponent } from 'app/new-question-answer-inputs/new-question-answer-inputs.component'
-import {AddtagComponent} from '../../addtag/addtag.component';
-
+import { AddtagComponent } from '../../addtag/addtag.component';
 
 @NgModule({
   imports: [
@@ -48,7 +48,7 @@ import {AddtagComponent} from '../../addtag/addtag.component';
     MatTooltipModule,
     MarkdownModule.forRoot(),
     ReactiveFormsModule
-    
+
   ],
   declarations: [
     DashboardComponent,
@@ -61,16 +61,16 @@ import {AddtagComponent} from '../../addtag/addtag.component';
     UpgradeComponent,
     LoginComponent,
     AdminComponent,
-      NewQuestionComponent,
-      UserQuizComponent,
-      UserActiveComponent,
-      UserCompletedComponent,
-      UserComponent,
-      NewQuestionTextComponent,
-      NewQuestionAnswersComponent,
-      NewQuestionAnswerInputsComponent,
-      AddtagComponent
+    NewQuestionComponent,
+    UserQuizComponent,
+    UserActiveComponent,
+    UserCompletedComponent,
+    UserComponent,
+    CompletedDetailsComponent,
+    NewQuestionTextComponent,
+    NewQuestionAnswersComponent,
+    NewQuestionAnswerInputsComponent,
+    AddtagComponent
   ]
 })
-
-export class AdminLayoutModule {}
+export class AdminLayoutModule { }
