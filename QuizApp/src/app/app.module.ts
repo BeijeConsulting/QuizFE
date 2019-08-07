@@ -48,6 +48,7 @@ import { InMemoryDataService } from './in-memory-data.service';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

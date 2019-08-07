@@ -10,9 +10,19 @@ export class QuestionsService {
 
   questionsUrl = 'api/questions';
 
+  tagsUrl = 'api/tags'
+
   constructor(private http: HttpClient) { }
 
   getQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(this.questionsUrl);
+  }
+
+  getTags(): Observable<string[]> {
+    return this.http.get<string[]>(this.tagsUrl);
+  }
+  searchQuestions(tagValue: string[]): Observable<Question[]>{
+    console.log(this.questionsUrl + '?tag=' + tagValue.join('&tag='))
+    return this.http.get<Question[]>(this.questionsUrl + '?tag=' + tagValue.join('&tag='))
   }
 }

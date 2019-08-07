@@ -7,6 +7,16 @@ import { Question } from './mockquestions/question';
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
+
+    const tags = [
+      'animali',
+      'natura',
+      'politica',
+      'colore',
+      'gossip'
+    ];
+
+
     const questions = [
       {
         id: 1,
@@ -286,7 +296,7 @@ export class InMemoryDataService implements InMemoryDbService {
         answers: [],
       },
     ];
-    return {questions};
+    return {questions, tags};
   }
   genId(questions: Question[]): number {
     return questions.length > 0 ? Math.max(...questions.map(question => question.id)) + 1 : 1;
