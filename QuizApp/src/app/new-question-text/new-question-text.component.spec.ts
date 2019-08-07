@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserCompletedComponent } from './user-completed.component';
+import { NewQuestionTextComponent } from './new-question-text.component';
 
-describe('UserCompletedComponent', () => {
-  let component: UserCompletedComponent;
-  let fixture: ComponentFixture<UserCompletedComponent>;
+describe('NewQuestionTextComponent', () => {
+  let component: NewQuestionTextComponent;
+  let fixture: ComponentFixture<NewQuestionTextComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserCompletedComponent ]
+      declarations: [ NewQuestionTextComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserCompletedComponent);
+    fixture = TestBed.createComponent(NewQuestionTextComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
