@@ -1,20 +1,21 @@
-import { Routes } from '@angular/router';
+import { Routes } from "@angular/router";
 
-import { DashboardComponent } from '../../dashboard/dashboard.component';
-import { UserProfileComponent } from '../../user-profile/user-profile.component';
-import { TableListComponent } from '../../table-list/table-list.component';
-import { TypographyComponent } from '../../typography/typography.component';
-import { IconsComponent } from '../../icons/icons.component';
-import { MapsComponent } from '../../maps/maps.component';
-import { NotificationsComponent } from '../../notifications/notifications.component';
-import { UpgradeComponent } from '../../upgrade/upgrade.component';
-import { LoginComponent } from '../../login/login.component'
-import {AdminComponent} from "../../admin/admin.component";
-import {NewQuestionComponent} from "../../new-question/new-question.component";
-import {UserComponent} from "../../user/user.component";
-import {UserActiveComponent} from "../../user-active/user-active.component";
-import {UserCompletedComponent} from "../../user-completed/user-completed.component";
-import {UserQuizComponent} from "../../user-quiz/user-quiz.component";
+import { DashboardComponent } from "../../dashboard/dashboard.component";
+import { UserProfileComponent } from "../../user-profile/user-profile.component";
+import { TableListComponent } from "../../table-list/table-list.component";
+import { TypographyComponent } from "../../typography/typography.component";
+import { IconsComponent } from "../../icons/icons.component";
+import { MapsComponent } from "../../maps/maps.component";
+import { NotificationsComponent } from "../../notifications/notifications.component";
+import { UpgradeComponent } from "../../upgrade/upgrade.component";
+import { LoginComponent } from "../../login/login.component";
+import { AdminComponent } from "../../admin/admin.component";
+import { NewQuestionComponent } from "../../new-question/new-question.component";
+import { UserComponent } from "../../user/user.component";
+import { UserActiveComponent } from "../../user-active/user-active.component";
+import { UserCompletedComponent } from "../../user-completed/user-completed.component";
+import { UserQuizComponent } from "../../user-quiz/user-quiz.component";
+import { CompletedDetailsComponent } from "../../completed-details/completed-details.component";
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -73,6 +74,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user', component: UserComponent},
     { path: 'user/active', component: UserActiveComponent},
     { path: 'user/completed', component: UserCompletedComponent},
+    { path: "user/completed/:id", component: CompletedDetailsComponent },
     { path: 'user/quiz', component: UserQuizComponent},
     { path: 'user/quiz/:id', component: UserQuizComponent }
 ];

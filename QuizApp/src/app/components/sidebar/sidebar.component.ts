@@ -6,10 +6,10 @@ import { QuizService } from 'app/quiz.service';
 
 declare const $: any;
 declare interface RouteInfo {
-    path: string;
-    title: string;
-    icon: string;
-    class: string;
+  path: string;
+  title: string;
+  icon: string;
+  class: string;
 }
 // { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
 // { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
