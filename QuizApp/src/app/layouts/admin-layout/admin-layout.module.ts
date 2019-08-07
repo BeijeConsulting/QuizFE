@@ -1,18 +1,18 @@
-import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { CommonModule } from "@angular/common";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AdminLayoutRoutes } from "./admin-layout.routing";
-import { DashboardComponent } from "../../dashboard/dashboard.component";
-import { UserProfileComponent } from "../../user-profile/user-profile.component";
-import { TableListComponent } from "../../table-list/table-list.component";
-import { TypographyComponent } from "../../typography/typography.component";
-import { IconsComponent } from "../../icons/icons.component";
-import { MapsComponent } from "../../maps/maps.component";
-import { NotificationsComponent } from "../../notifications/notifications.component";
-import { UpgradeComponent } from "../../upgrade/upgrade.component";
-import { AdminComponent } from "../../admin/admin.component";
-import { Location } from "@angular/common";
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminLayoutRoutes } from './admin-layout.routing';
+import { DashboardComponent } from '../../dashboard/dashboard.component';
+import { UserProfileComponent } from '../../user-profile/user-profile.component';
+import { TableListComponent } from '../../table-list/table-list.component';
+import { TypographyComponent } from '../../typography/typography.component';
+import { IconsComponent } from '../../icons/icons.component';
+import { MapsComponent } from '../../maps/maps.component';
+import { NotificationsComponent } from '../../notifications/notifications.component';
+import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { AdminComponent } from '../../admin/admin.component'
+import { MarkdownModule } from 'ngx-markdown';
 
 import {
   MatButtonModule,
@@ -29,6 +29,10 @@ import { UserActiveComponent } from "../../user-active/user-active.component";
 import { UserCompletedComponent } from "../../user-completed/user-completed.component";
 import { UserComponent } from "../../user/user.component";
 import { CompletedDetailsComponent } from "../../completed-details/completed-details.component";
+import { NewQuestionTextComponent } from 'app/new-question-text/new-question-text.component';
+import { NewQuestionAnswersComponent } from 'app/new-question-answers/new-question-answers.component'
+import { NewQuestionAnswerInputsComponent } from 'app/new-question-answer-inputs/new-question-answer-inputs.component'
+import { AddtagComponent } from '../../addtag/addtag.component';
 
 @NgModule({
   imports: [
@@ -41,7 +45,10 @@ import { CompletedDetailsComponent } from "../../completed-details/completed-det
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MarkdownModule.forRoot(),
+    ReactiveFormsModule
+
   ],
   declarations: [
     DashboardComponent,
@@ -59,7 +66,11 @@ import { CompletedDetailsComponent } from "../../completed-details/completed-det
     UserActiveComponent,
     UserCompletedComponent,
     UserComponent,
-    CompletedDetailsComponent
+    CompletedDetailsComponent,
+    NewQuestionTextComponent,
+    NewQuestionAnswersComponent,
+    NewQuestionAnswerInputsComponent,
+    AddtagComponent
   ]
 })
-export class AdminLayoutModule {}
+export class AdminLayoutModule { }

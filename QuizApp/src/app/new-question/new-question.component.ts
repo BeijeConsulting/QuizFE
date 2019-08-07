@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { QuestionSenderService } from '../question-sender.service'
+import { Answer } from 'app/mockquestions/question';
 
 @Component({
   selector: 'app-new-question',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-question.component.scss']
 })
 export class NewQuestionComponent implements OnInit {
+answers: Answer[]
+  constructor(
+    private questionsenderService: QuestionSenderService,
+    
+  ) { }
 
-  constructor() { }
 
   ngOnInit() {
+  }
+
+  stampaaschermo() {
+     
+    console.log(this.answers)
+    this.questionsenderService.getTag().subscribe(tag => console.log(tag))
   }
 
 }

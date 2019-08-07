@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../../sidebar.service';
 import { QUESTIONS } from '../../mockquestions/mock-questions'
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router'
 import { QuizService } from 'app/quiz.service';
 
 declare const $: any;
@@ -42,25 +42,27 @@ export class SidebarComponent implements OnInit {
     menuItemsA: any[];
     menuItemsU: any[];
     menuItemsQ= QUESTIONS.filter(menuItemsQ => menuItemsQ);
-    admin: boolean = false;
+    admin: boolean = null;
     quiz: boolean = false;
+    url : string;
     constructor(
         private sidebarservice: SidebarService,
         private router: Router,
-        private quizService : QuizService
-    ) { }
+        private quizService : QuizService,
+        private route: ActivatedRoute,
+    ) {
+        router.events.subscribe((val) => {
+            val instanceof NavigationEnd ? 
+            (val.url.indexOf('/user/quiz')===0 ? this.quiz=true : this.quiz=false ) : this.quiz=false;
+        });
+     }
 
     ngOnInit() {
         this.menuItemsA = ROUTESA.filter(menuItemsA => menuItemsA);
         this.menuItemsU = ROUTESU.filter(menuItemsU => menuItemsU);
-    }
-    getQuiz():boolean {
-        this.router.url.indexOf('/user/quiz')===0 ? this.updateQuiz(true) : this.updateQuiz(false);
-        this.quiz = this.sidebarservice.getQuiz()
-        return this.quiz
-    }
-    updateQuiz(quiz:boolean):void {
-        this.sidebarservice.updateQuiz(quiz)
+        this.route.params.subscribe(routeParams => {
+            console.log(routeParams)
+        });
     }
     getLogin():boolean {
         this.admin = this.sidebarservice.getLogin()

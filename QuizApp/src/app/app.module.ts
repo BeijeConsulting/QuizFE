@@ -14,7 +14,6 @@ import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { InMemoryDataService } from "./in-memory-data.service";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,

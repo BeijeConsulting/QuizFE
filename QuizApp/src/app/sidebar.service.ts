@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SidebarService {
-admin: boolean = false;
+admin: boolean = null;
 quiz: boolean = false;
   constructor() { }
   getLogin() {
@@ -12,12 +12,6 @@ quiz: boolean = false;
   }
   updateAdmin(login: boolean) {
     this.admin = login
-  }
-  getQuiz() {
-    return this.quiz
-  }
-  updateQuiz(quiz: boolean) {
-    this.quiz = quiz
   }
 }
 

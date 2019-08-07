@@ -6,7 +6,7 @@
         Beije Quiz
     </a>
 </div>
-<div class="menuSide" *ngIf="getQuiz()===true">
+<div class="menuSide" *ngIf="quiz">
     <ul>
         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:
                     true}" *ngFor="let menuItem of menuItemsQ" class="{{menuItem.class}} nav-item">
@@ -16,7 +16,7 @@
         </li>
     </ul>
 </div>
-<div class="submit-sidebar">
+<div class="submit-sidebar" *ngIf="quiz">
     <button class="btn btn-success" (click)="clear()">INVIA QUIZ</button>
 </div>
 <div class="sidebar-wrapper">
@@ -69,21 +69,18 @@
         </ul>
     </div> -->
     <ul class="nav">
-        <div *ngIf="getLogin()===true && getQuiz()===false">
-            <li exact routerLinkActive="active" *ngFor="let menuItem of menuItemsA" class="{{menuItem.class}} nav-item">
-
-                <a class="nav-link" [routerLink]="[menuItem.path]" routerLinkActive="active-link"
-                    [routerLinkActiveOptions]="{exact:
-                    true}">
+        <div *ngIf="getLogin() && !quiz">
+            <li exact routerLinkActive="active" *ngFor="let menuItem of menuItemsA" [routerLinkActiveOptions]="{exact:
+                true}" class="{{menuItem.class}} nav-item">
+                <a class="nav-link" [routerLink]="[menuItem.path]">
                     <i class="material-icons">{{menuItem.icon}}</i>
                     <p>{{menuItem.title}}</p>
                 </a>
             </li>
         </div>
-        <div *ngIf="getLogin()===false && getQuiz()===false">
+        <div *ngIf="getLogin()===false && !quiz">
             <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:
                 true}" *ngFor="let menuItem of menuItemsU" class="{{menuItem.class}} nav-item">
-
                 <a class="nav-link" [routerLink]="[menuItem.path]">
                     <i class="material-icons">{{menuItem.icon}}</i>
                     <p>{{menuItem.title}}</p>

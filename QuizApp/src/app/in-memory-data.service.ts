@@ -10,6 +10,13 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const risposte = COMPLETEDQUIZ;
 
+    const tags = [
+      'animali',
+      'natura',
+      'politica',
+      'colore',
+      'gossip',
+    ];
     const questions = [
       {
         id: 1,
@@ -289,7 +296,7 @@ export class InMemoryDataService implements InMemoryDbService {
         answers: []
       }
     ];
-    return { questions, risposte };
+    return { questions, risposte, tags };
   }
   genId(questions: Question[]): number {
     return questions.length > 0

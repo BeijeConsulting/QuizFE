@@ -21,6 +21,24 @@ export class AdminLayoutComponent implements OnInit {
   private _router: Subscription;
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
+  ngxMarkdownVersion = '8.1.0';
+
+  markdown = `## Markdown __rulez__!
+---
+
+### Syntax highlight
+\`\`\`typescript
+const language = 'typescript';
+\`\`\`
+
+### Lists
+1. Ordered list
+2. Another bullet point
+  - Unordered list
+  - Another unordered bullet point
+
+### Blockquote
+> Blockquote to the max`;
 
   constructor(public location: Location, private router: Router) {}
 
