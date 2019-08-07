@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Question } from './mockquestions/question';
 import { QUESTIONS } from './mockquestions/mock-questions';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
-  constructor(
+  constructor(private router: Router
   ) { }
   answers: answerQuiz[] = [];
 
@@ -37,7 +38,11 @@ export class QuizService {
     return area;
   }
   clear() {
-    this.answers = [];
+    if (confirm("Sei sicuro di inviare il quiz? \nUna volta inviato non potrà più essere modificato.") ) {
+      alert(JSON.stringify(this.answers, null, "\t"))
+      this.answers = [];
+      this.router.navigate(['/user/quiz']);
+    }
   }
   getQuestion(id: number): Question {
     return QUESTIONS.filter(item=>item.id===id)[0];

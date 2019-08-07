@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Question } from 'app/mockquestions/question';
 import { ActivatedRoute } from '@angular/router';
 import { QuizService, answerQuiz } from '../quiz.service'
-import { QuestionsService } from 'app/questions.service';
 
 @Component({
   selector: 'app-user-quiz',
@@ -14,14 +13,12 @@ export class UserQuizComponent implements OnInit {
   defaultArea : string;
   constructor(
     private route: ActivatedRoute,
-    private questionsService: QuestionsService,
     private quizService : QuizService
   ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(routeParams => {
       this.getQuestion(+routeParams.id);
-      console.log("log",this.getQuiz())
     });
   }
   
@@ -35,13 +32,13 @@ export class UserQuizComponent implements OnInit {
   addAnswer(id:number){
     let answerValue : string[] = [];
     let checkedInput = document.querySelectorAll('input[name="answer"]:checked');
-    checkedInput.forEach(input=>answerValue.push(input.value))
+    checkedInput.forEach(input=>answerValue.push((<HTMLInputElement>input).value))
     let answer:answerQuiz= {id,answerValue,textarea:false};
     this.quizService.add(answer)
   }
   addAnswerArea(id:number){
     let answerValue : string[] = [];
-    let textareaValue = document.getElementById("textarea").value;
+    let textareaValue = (<HTMLInputElement>document.getElementById("textarea")).value;
     answerValue.push(textareaValue)
     let answer:answerQuiz= {id,answerValue,textarea:true};
     this.quizService.addArea(answer)
@@ -54,5 +51,8 @@ export class UserQuizComponent implements OnInit {
   }
   getTotQuestions(){
     return this.quizService.getTotQuestions();
+  }
+  clear(){
+    this.quizService.clear();
   }
 }

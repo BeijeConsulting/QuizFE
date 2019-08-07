@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../../sidebar.service';
 import { QUESTIONS } from '../../mockquestions/mock-questions'
 import { Router } from '@angular/router'
+import { QuizService } from 'app/quiz.service';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -46,6 +47,7 @@ export class SidebarComponent implements OnInit {
     constructor(
         private sidebarservice: SidebarService,
         private router: Router,
+        private quizService : QuizService
     ) { }
 
     ngOnInit() {
@@ -70,4 +72,7 @@ export class SidebarComponent implements OnInit {
         }
         return true;
     };
+    clear(){
+        this.quizService.clear();
+    }
 }
