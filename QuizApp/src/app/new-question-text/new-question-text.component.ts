@@ -8,11 +8,17 @@ import { QuestionSenderService } from '../question-sender.service'
 })
 export class NewQuestionTextComponent implements OnInit {
   editor: boolean = true
-  constructor() { }
+  constructor(
+    private qss: QuestionSenderService
+  ) { }
 
   setEditor() {
     this.editor = !this.editor
   }
+send(text) {
+  this.qss.giveText(text)
+}
+
   ngOnInit() {
   }
 
