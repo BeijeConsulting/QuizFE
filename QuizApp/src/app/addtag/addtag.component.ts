@@ -1,8 +1,5 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
-import { QuestionsService} from '../questions.service';
-import {Question} from '../mockquestions/question';
-import {Observable, Subject} from 'rxjs';
-import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
+import { QuestionsService } from '../questions.service';
 
 @Component({
   selector: 'app-addtag',
@@ -12,7 +9,6 @@ import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
 export class AddtagComponent implements OnInit {
   @Input() tagAdded;
-  questions: Question[];
   newtags: string[] = [];
   tags: string[];
   searchedTags: string[];
@@ -25,17 +21,17 @@ export class AddtagComponent implements OnInit {
   getTags(): void {
     this.qs.getTags().subscribe(res => this.tags = res.filter((el) => !this.newtags.includes(el)))
   }
-  search(term: string): void {
+  search(): void {
     if (this.tags) {
-      this.searchedTags = this.tags.filter((el) => el.indexOf(term) !== -1);
+      this.searchedTags = this.tags.filter((el) => el.indexOf(this.tagAdded) !== -1);
     }
     console.log(this.tagAdded)
   }
-  addNewTag(newTag: string, e: KeyboardEvent) {
+  addNewTag(e: KeyboardEvent) {
    if (e.code === 'Space' || e.code === 'Enter') {
-      newTag = newTag.replace(/[^a-z0-9]/gi,'');
-     if (newTag && !this.newtags.includes(newTag)) {
-        this.newtags.push(newTag);
+      this.tagAdded = this.tagAdded.replace(/[^a-z0-9]/gi, '');
+     if (this.tagAdded && !this.newtags.includes(this.tagAdded)) {
+        this.newtags.push(this.tagAdded);
         this.getTags();
       }
      this.tagAdded = '';
@@ -44,7 +40,6 @@ export class AddtagComponent implements OnInit {
 
   selectTag(defaultTag: string) {
     this.newtags.push(defaultTag);
-    this.search('');
     this.getTags();
   }
 

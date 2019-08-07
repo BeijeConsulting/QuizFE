@@ -21,9 +21,9 @@
                 <li *ngFor="let tag of searchedTags" (click)="selectTag(tag); tagAdded=''">{{tag}}</li>
             </ul>
             <input [(ngModel)]="tagAdded"
-                   (input)="search(tagAdded.toLowerCase())"
+                   (input)="search()"
                    type="text" placeholder="Inserisci tags..."
-                   (keyup)="addNewTag(tagAdded.toLowerCase(), $event);">
+                   (keyup)="addNewTag($event)">
         </div>
     </div>
 </div>
