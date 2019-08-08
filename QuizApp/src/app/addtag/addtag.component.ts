@@ -2,7 +2,7 @@ import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { QuestionsService} from '../questions.service';
 import {Question} from '../mockquestions/question';
 import { QuestionSenderService } from '../question-sender.service'
-import {Observable, Subject} from 'rxjs';
+import {Observable, Subject, Subscription} from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
 @Component({
@@ -13,6 +13,7 @@ import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
 export class AddtagComponent implements OnInit {
   @Input() tagAdded;
+  subscription: Subscription
   
   questions: Question[];
   newtags: string[] = [];
@@ -20,7 +21,9 @@ export class AddtagComponent implements OnInit {
   searchedTags: string[];
   
   constructor(private qs: QuestionsService,
-    private qss: QuestionSenderService) { }
+    private qss: QuestionSenderService) {
+     
+     }
 
   ngOnInit() {
     this.getTags();

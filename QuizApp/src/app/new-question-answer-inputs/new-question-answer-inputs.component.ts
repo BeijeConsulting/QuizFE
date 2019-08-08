@@ -3,6 +3,7 @@ import { FormBuilder, FormArray } from '@angular/forms';
 import { QuestionSenderService } from '../question-sender.service'
 import { Answer } from 'app/mockquestions/question';
 import { count } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -12,25 +13,28 @@ import { count } from 'rxjs/operators';
 })
 export class NewQuestionAnswerInputsComponent implements OnInit {
   count = [0,1]
+
   contatore: number = 1
   correct: boolean[] = []
   input: string[] = []
   answers: Answer[] = []
+  subscription: Subscription
 
   constructor(private fb: FormBuilder,
-    private qss: QuestionSenderService) { }
+    private qss: QuestionSenderService) {
+
+     }
   @Input() answer: string
   @Input() value: string
   ngOnInit() {
-    // for(let i=0; i< this.input.length; i++) {
-    //   this.radio.push(false)
-    //   this.check.push(false)
+
     }
   
 
   addAnswer() {
     this.contatore++
     this.count.push(this.contatore)
+    
     this.addToArray()
   } 
   delInput(i) {
@@ -47,8 +51,9 @@ export class NewQuestionAnswerInputsComponent implements OnInit {
     console.log(this.input)
     this.generateAnswer()
   }
+ 
 
-  generateAnswer() {
+  generateAnswer() { 
     this.answers = [] 
     for(let i:number = 0; i < this.count.length; i++) {
       this.answers[i] = {
@@ -67,43 +72,3 @@ export class NewQuestionAnswerInputsComponent implements OnInit {
 
 
  
-
-//   generateAnswer() {
-//     let corr: boolean[]
-//     console.log(this.answer)
-//     if (this.answer==='radio') {
-      
-//       corr = this.radio
-//     } else {
-//       corr = this.check
-//     }
-//     for(let a: number =0;a < this.input.length; a++) {
-//       let b = a.toString()
-//       console.log(this.value)
-//       if (this.value === 'a') {
-//         this.answers[a] = {
-//           value: this.alf[a],
-//           text: this.ans[a],       
-//           correct: corr[a]
-//         }
-//       } else {
-//         this.answers[a] = {
-//           value: b,
-//           text: this.ans[a],
-//           correct: corr[a]
-//         }
-//       }
-//     }
-    
-//     return this.answers
-//   }
-
-//   loadAnswers() {
-//     this.generateAnswer()
-//     this.qss.giveAnswers(this.answers)
-//   }
-
-//   update(ev, i) {
-//     this.ans[i] = ev
-//     this.loadAnswers()
-//   

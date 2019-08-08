@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Answer, Question } from './mockquestions/question';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionSenderService {
-question: Question = {
-  id: 0,
-  tag: [''],
-  text: '',
-  answertype: '',
-  answers: [],
-}
+  question: Question = {
+    id: 0,
+    tag: [],
+    text: '',
+    answertype: '',
+    answers: [],
+  }
 
-$tag = new BehaviorSubject<string[]>(['']);
-$textarea = new BehaviorSubject<string>('');
-$answertype = new BehaviorSubject<string>('');
-$answers = new BehaviorSubject<Answer[]>([{value: '', text: '', correct: null}])
+  $tag = new BehaviorSubject<string[]>(['']);
+  $textarea = new BehaviorSubject<string>('');
+  $answertype = new BehaviorSubject<string>('');
+  $answers = new BehaviorSubject<Answer[]>([{ value: '', text: '', correct: null }])
 
   constructor() { }
 
@@ -60,17 +60,60 @@ $answers = new BehaviorSubject<Answer[]>([{value: '', text: '', correct: null}])
   giveAnswers(answers: Answer[]) {
     this.$answers.next(answers)
   }
+
   
-  submit() {
+
+  controllo() {
+    let check = true
     this.getTag().subscribe(tag => this.question.tag = tag)
     this.getText().subscribe(text => this.question.text = text)
     this.getAnswerType().subscribe(answertype => this.question.answertype = answertype)
-    if (this.question.answertype === 'textarea') {
-    this.question.answers = []
-    } else {
     this.getAnswers().subscribe(answers => this.question.answers = answers)
+    this.question.tag.length === 0 ? check = false : check = true
+    this.question.text === '' ? check = false : check = true
+    this.question.answertype === '' ? check = false : check = true
+    let checkanswer = false;
+for(let i=0; i < this.question.answers.length;i++) {
+  if (this.question.answers[i].text.length) {
+    console.log(this.question.answers[i].text.length)
+    if (this.question.answers[i].correct) {checkanswer = true}
+  } else {
+    checkanswer = false
+    break
+  }
+}
+
+    
+    if (!checkanswer) {check = false}
+
+    return check
+  }
+ 
+
+  submit() {
+    let check = this.controllo()
+    if (check === false) {
+      window.alert('Controlla i campi inseriti')
+      return
     }
-    console.warn(this.question)
+    let ok = window.confirm('Carico la domanda?')
+    if (ok === true) {
+      console.warn(this.question)
+      this.emptyQuestion()
+    } else {
+      return
+    }
+  }
+
+  emptyQuestion() {
+    this.question = {
+      id: null,
+      tag: [''],
+      text: '',
+      answertype: '',
+      answers: [],
+    }
+    console.log(this.question)
   }
 
 }

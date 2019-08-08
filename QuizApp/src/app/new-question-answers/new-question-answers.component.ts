@@ -18,6 +18,7 @@ answervalue: string
 
 
   ngOnInit() {
+    this.qss.giveAnswerType(this.answertype)
   }
 
 onChange(val: string): void {

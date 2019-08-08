@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionSenderService } from '../question-sender.service'
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-new-question-text',
@@ -8,9 +9,11 @@ import { QuestionSenderService } from '../question-sender.service'
 })
 export class NewQuestionTextComponent implements OnInit {
   editor: boolean = true
+  subscription: Subscription
   constructor(
-    private qss: QuestionSenderService
-  ) { }
+    private qss: QuestionSenderService,
+  ) {
+   }
 
   setEditor() {
     this.editor = !this.editor

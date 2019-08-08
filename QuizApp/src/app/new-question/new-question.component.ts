@@ -21,13 +21,14 @@ answers: Answer[]
   ngOnInit() {
   }
 
+  emptyQuestion() {
+    this.questionsenderService.emptyQuestion()
+  }
+
   
 
   stampaaschermo() {
     console.log(this.answers)
-    this.questionsenderService.getTag().subscribe(tag => console.log(tag))
-    this.questionsenderService.getText().subscribe(text => console.log(text))
-    this.questionsenderService.getAnswers().subscribe(myMessage => console.log(myMessage))
     this.questionsenderService.submit()
   }
 
