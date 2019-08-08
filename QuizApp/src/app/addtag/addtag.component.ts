@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import { QuestionsService } from '../questions.service';
+import { QuestionSenderService } from '../question-sender.service'
 
 @Component({
   selector: 'app-addtag',
@@ -12,7 +13,8 @@ export class AddtagComponent implements OnInit {
   newtags: string[] = [];
   tags: string[];
   searchedTags: string[];
-  constructor(private qs: QuestionsService) { }
+  constructor(private qs: QuestionsService,
+              private qss: QuestionSenderService) { }
 
   ngOnInit() {
     this.getTags();
@@ -28,26 +30,35 @@ export class AddtagComponent implements OnInit {
     console.log(this.tagAdded)
   }
   addNewTag(e: KeyboardEvent) {
-   if (e.code === 'Space' || e.code === 'Enter') {
-      this.tagAdded = this.tagAdded.replace(/[^a-z0-9]/gi, '');
-     if (this.tagAdded && !this.newtags.includes(this.tagAdded)) {
-        this.newtags.push(this.tagAdded);
+    let newTag= this.tagAdded;
+    if (e.code === 'Space' || e.code === 'Enter') {
+      newTag = newTag.replace(/[^a-z0-9]/gi,'');
+      if (newTag && !this.newtags.includes(newTag)) {
+        this.newtags.push(newTag);
+        this.loadTag()
         this.getTags();
       }
-     this.tagAdded = '';
+      this.tagAdded = '';
     }
   }
 
   selectTag(defaultTag: string) {
     this.newtags.push(defaultTag);
+    this.loadTag();
     this.getTags();
   }
 
   deleteTag (tag) {
     const index = this.newtags.indexOf(tag);
     this.newtags.splice(index, 1);
+    this.loadTag()
     this.getTags();
   }
+
+  loadTag() {
+    this.qss.giveTag(this.newtags)
+  }
+
 
 
 }

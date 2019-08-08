@@ -13,16 +13,12 @@ answers: Answer[]
 
   constructor(
     private questionsenderService: QuestionSenderService,
-    
   ) {
       }
 
 
   ngOnInit() {
   }
-
-  
-
   stampaaschermo() {
     console.log(this.answers)
     this.questionsenderService.getTag().subscribe(tag => console.log(tag))

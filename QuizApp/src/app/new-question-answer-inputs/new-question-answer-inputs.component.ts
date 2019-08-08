@@ -65,9 +65,6 @@ export class NewQuestionAnswerInputsComponent implements OnInit {
 }
 
 
-
- 
-
 //   generateAnswer() {
 //     let corr: boolean[]
 //     console.log(this.answer)

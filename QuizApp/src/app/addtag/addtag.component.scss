@@ -4,8 +4,8 @@
 }
 
 .MainContainer {
-  width: 370px;
-  height: 380px;
+  width: 50%;
+  height: 230px;
   background-color: #fff;
   border: none;
   border-radius: 8px;
@@ -17,8 +17,8 @@
 }
 .header{
   margin-bottom: 8px;
-  height: 10%;
-  background-color: #00b9f1 ;
+  height: 20%;
+  background-color: #9c27b0 ;
   border: none;
   border-radius: 8px 8px 0px 0px;
   display: flex;
@@ -31,8 +31,14 @@
 }
 .middle-content {
   height: 50px;
+  width: 100%;
   line-height: 50px;
   vertical-align: middle;
+}
+.Aggiunti {
+  width: 100%;
+  font-weight: bolder;
+  padding-left:8px;
 }
 .InputText {
   position: relative;
@@ -43,14 +49,14 @@
 .InputText__Aggiunti {
   position: relative;
   display: flex;
-  height: 90%;
+  height: 72%;
   overflow: auto;
 }
 .InputText__InputField {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 370px;
+  width: 100%;
 }
 .NuoviTags {
   display: flex;
@@ -65,7 +71,7 @@
   padding: 8px;
   margin-right: 6px;
   margin-bottom: 6px;
-  background-color: #0c83e2;
+  background-color: #4caf50;
   color: #fff;
   border-radius: 4px;
   box-shadow: 2px 2px 4px rgba(0,0,0,0.5);

@@ -60,7 +60,6 @@ $answers = new BehaviorSubject<Answer[]>([{value: '', text: '', correct: null}])
   giveAnswers(answers: Answer[]) {
     this.$answers.next(answers)
   }
-  
   submit() {
     this.getTag().subscribe(tag => this.question.tag = tag)
     this.getText().subscribe(text => this.question.text = text)
