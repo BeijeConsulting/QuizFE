@@ -122,6 +122,7 @@ button.btn-close {
 }
 svg.btn-info-question {
   width: 30px;
+  cursor: pointer;
 }
 .popup-question {
   font-size: 30px;
@@ -152,4 +153,10 @@ svg.btn-info-question {
       background: red;
     }
   }
+  .tr-pointer {
+    cursor: pointer;
+  }
+}
+.content-stats {
+  width: 90%;
 }

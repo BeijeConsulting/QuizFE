@@ -14,7 +14,7 @@ export const COMPLETEDQUIZ: completedQuiz[] = [
       {
         id: 2,
         answer: ["c"],
-        correct: ["c"]
+        correct: ["b"]
       },
       {
         id: 3,
@@ -56,7 +56,7 @@ export const COMPLETEDQUIZ: completedQuiz[] = [
       {
         id: 9,
         answer: ["a"],
-        correct: ["b"]
+        correct: ["a"]
       },
       {
         id: 10,
