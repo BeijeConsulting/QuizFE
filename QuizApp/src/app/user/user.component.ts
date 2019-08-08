@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QuizService } from 'app/quiz.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private quizService : QuizService
+  ) { }
 
   ngOnInit() {
   }
-
+  getTotQuestions(){
+    return this.quizService.getTotQuestions();
+  }
+  getCounter(){
+    return this.quizService.counter>0;
+  }
 }

@@ -1,31 +1,43 @@
 <div class="main-content-quiz">
-  <div class="card table">
-    <div class="card-header card-header-warning">
-      <h4 class="card-title">Quiz completati</h4>
-      <p class="card-category">
-        Questa è una lista di tutti i quiz che sono stati completati
-      </p>
+  <div class="content-stats">
+    <div class="card table">
+      <div class="card-header card-chart card-header-success">
+        <div class="ct-chart" id="dailySalesChart"></div>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Statistiche quiz completati</h4>
+      </div>
     </div>
-    <div class="card-content table-responsive table-full-width">
-      <table class="table">
-        <thead class="text-danger">
-          <th>Quiz</th>
-          <th>Data</th>
-          <th>Tags</th>
-          <th>Risposte</th>
-        </thead>
-        <tbody>
-          <tr
-            *ngFor="let quiz of quizTot"
-            routerLink="/user/completed/{{ quiz.id }}"
-          >
-            <td>{{ quiz.id }}</td>
-            <td>{{ quiz.data }}</td>
-            <td>{{ quiz.tag }}</td>
-            <td class="text-danger">{{ getSumCorrectFunct(quiz.id) }}</td>
-          </tr>
-        </tbody>
-      </table>
+
+    <div class="card table">
+      <div class="card-header card-header-warning">
+        <h4 class="card-title">Quiz completati</h4>
+        <p class="card-category">
+          Questa è una lista di tutti i quiz che sono stati completati
+        </p>
+      </div>
+      <div class="card-content table-responsive table-full-width">
+        <table class="table">
+          <thead class="text-danger">
+            <th>Quiz</th>
+            <th>Data</th>
+            <th>Tags</th>
+            <th>Risposte</th>
+          </thead>
+          <tbody>
+            <tr
+              class="tr-pointer"
+              *ngFor="let quiz of quizTot"
+              routerLink="/user/completed/{{ quiz.id }}"
+            >
+              <td>{{ quiz.id }}</td>
+              <td>{{ quiz.data }}</td>
+              <td>{{ quiz.tag }}</td>
+              <td class="text-danger">{{ getSumCorrectFunct(quiz.id) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

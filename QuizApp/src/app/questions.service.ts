@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Question } from './mockquestions/question';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+  })
+};
 
 @Injectable({
   providedIn: "root"
@@ -25,7 +31,11 @@ export class QuestionsService {
     return this.http.get<string[]>(this.tagsUrl)
   }
   searchQuestions(tagValue: string[]): Observable<Question[]>{
-    console.log(this.questionsUrl + '?tag=' + tagValue.join('&tag='))
     return this.http.get<Question[]>(this.questionsUrl + '?tag=' + tagValue.join('&tag='))
+  }
+
+  deleteQuestion(question: Question): Observable<{}> {
+    const url = this.questionsUrl + '/' + question.id;
+    return this.http.delete(url, httpOptions)
   }
 }

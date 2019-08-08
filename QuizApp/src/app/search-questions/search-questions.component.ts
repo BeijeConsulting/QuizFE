@@ -1,12 +1,15 @@
 import { Component, OnInit, Input, Output } from "@angular/core";
 import { Question } from "../mockquestions/question";
 import { QuestionsService } from "../questions.service";
+import { SidebarService } from "../sidebar.service";
+import { QuizService } from "app/quiz.service";
 
 @Component({
   selector: "app-search-questions",
   templateUrl: "./search-questions.component.html",
   styleUrls: ["./search-questions.component.scss"]
 })
+
 export class SearchQuestionsComponent implements OnInit {
   @Input() searchBarValue: string;
   questions: Question[];
@@ -14,7 +17,11 @@ export class SearchQuestionsComponent implements OnInit {
   foundTags: string[];
   searchedTags: string[] = [];
 
-  constructor(private questionService: QuestionsService) {}
+  constructor(
+    private questionService: QuestionsService, 
+    private sidebarService: SidebarService,
+    private quizService : QuizService
+    ) {}
 
   ngOnInit() {
     this.getTags();
@@ -43,12 +50,17 @@ export class SearchQuestionsComponent implements OnInit {
   }
 
   searchQuestions() {
-    this.questionService.searchQuestions(this.searchedTags).subscribe(res => {this.questions = res;})
+    this.questionService.searchQuestions(this.searchedTags).subscribe(res => {
+      this.questions = res;
+      if (!this.getLogin()){
+        this.quizService.addQuiz(this.questions);
+      }
+    })
     this.searchBarValue = '';
   }
 
   deleteQuestion(question: Question){
-    this.questions = this.questions.filter(q => q !== question)
+    this.questionService.deleteQuestion(question).subscribe(res => this.searchQuestions());
   }
 
   deleteTag(tag: string){
@@ -58,6 +70,13 @@ export class SearchQuestionsComponent implements OnInit {
       this.searchQuestions();
     }else {
       this.questions = []
+      if (!this.getLogin()){
+        this.quizService.clearQuiz();
+      }
     }
+  }
+
+  getLogin() {
+    return this.sidebarService.getLogin();
   }
 }
