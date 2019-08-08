@@ -48,7 +48,7 @@ export class SearchQuestionsComponent implements OnInit {
   }
 
   deleteQuestion(question: Question){
-    this.questions = this.questions.filter(q => q !== question)
+    this.questionService.deleteQuestion(question).subscribe(res => this.searchQuestions());
   }
 
   deleteTag(tag: string){
