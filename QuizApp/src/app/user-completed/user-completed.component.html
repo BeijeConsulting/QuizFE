@@ -15,11 +15,14 @@
           <th>Risposte</th>
         </thead>
         <tbody>
-          <tr *ngFor="let quiz of quizTot" routerLink="/user/completed/{{ quiz.id }}">
+          <tr
+            *ngFor="let quiz of quizTot"
+            routerLink="/user/completed/{{ quiz.id }}"
+          >
             <td>{{ quiz.id }}</td>
             <td>{{ quiz.data }}</td>
             <td>{{ quiz.tag }}</td>
-            <td class="text-danger">5/8</td>
+            <td class="text-danger">{{ getSumCorrectFunct(quiz.id) }}</td>
           </tr>
         </tbody>
       </table>

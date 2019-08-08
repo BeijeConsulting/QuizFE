@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { Question, completedQuiz } from "app/mockquestions/question";
-import { QuestionsService } from "app/questions.service";
-import { RisposteService } from "app/risposte.service";
+import { Question, completedQuiz } from "../mockquestions/question";
+import { QuestionsService } from "../questions.service";
+import { RisposteService } from "../risposte.service";
 import { Location } from "@angular/common";
 
 @Component({
@@ -16,6 +16,8 @@ export class CompletedDetailsComponent implements OnInit {
   question: Question;
   answerUser: string;
   answerCorrect: string;
+  answerUserCorect: [];
+  quest: any = null;
 
   constructor(
     private questionsService: QuestionsService,
@@ -25,7 +27,6 @@ export class CompletedDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.getRisposta();
     this.getQuiz();
   }
 
@@ -33,9 +34,25 @@ export class CompletedDetailsComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get("id");
     this.risposteService.getQuiz(id).subscribe(quiz => {
       this.quiz = quiz;
+      console.log("quiz:", this.quiz);
     });
   }
-
+  openDialog(id: number) {
+    this.quest = " ";
+    this.questionsService.getQuestion(id).subscribe(quest => {
+      this.quest = quest;
+      console.log("quest:", this.quest);
+    });
+  }
+  closeDialog() {
+    this.quest = null;
+  }
+  userAnswer(val) {
+    let answersUser = this.quiz.answersuser.filter(
+      item => item.id === this.quest.id
+    )[0];
+    return answersUser.answer.indexOf(val) != -1;
+  }
   getCorrect(id: number) {
     this.answerUser = "";
     this.answerCorrect = "";
@@ -47,35 +64,4 @@ export class CompletedDetailsComponent implements OnInit {
     });
     return this.answerCorrect === this.answerUser;
   }
-  // getRsiposta(): void {
-  //   const id = +this.route.snapshot.paramMap.get("id");
-  //   this.risposteService
-  //     .getRisposta(id)
-  //     .subscribe(risposte => (this.risposta = risposte));
-  //   console.log(this.risposta);
-
-  // }
-
-  // getQuestion1(id: number) {
-  //   let correct: any[] = [];
-  //   this.questions.map(risposta =>
-  //     risposta.id === id
-  //       ? risposta.answers.map(answer =>
-  //           answer.correct ? correct.push(answer.value) : null
-  //         )
-  //       : null
-  //   );
-  //   // console.log("quest: ", correct);
-  //   return correct;
-  // }
-
-  // getRisposta(id: number) {
-  //   let correctuser: any[] = [];
-  //   this.risposta.map(risposte =>
-  //     risposte.id === id ? correctuser.push(risposte.answersuser) : null
-  //   );
-  //   // console.log("quest: ", correctuser);
-
-  //   return correctuser;
-  // }
 }

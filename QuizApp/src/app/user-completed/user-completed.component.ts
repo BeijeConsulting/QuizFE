@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Question } from "../mockquestions/question";
-import { QuestionsService } from "app/questions.service";
+import { QuestionsService } from "../questions.service";
 import { completedQuiz } from "../mockquestions/question";
-import { RisposteService } from "app/risposte.service";
+import { RisposteService } from "../risposte.service";
 
 @Component({
   selector: "app-user-completed",
@@ -19,15 +19,7 @@ export class UserCompletedComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getQuestions();
     this.getRisposte();
-  }
-
-  getQuestions(): void {
-    this.questionService.getQuestions().subscribe(questions => {
-      this.questions = questions;
-      console.log(this.questions);
-    });
   }
 
   getRisposte(): void {
@@ -35,27 +27,15 @@ export class UserCompletedComponent implements OnInit {
       this.quizTot = risposte;
     });
   }
-
-  getQuestion(id: number) {
-    let correct: any[] = [];
-    this.questions.map(risposta =>
-      risposta.id === id
-        ? risposta.answers.map(answer =>
-            answer.correct ? correct.push(answer.value) : null
-          )
-        : null
-    );
-    console.log("quest: ", correct);
-    return correct;
-  }
-
-  getQuiz(id: number) {
-    let correctuser: any[] = [];
-    this.quizTot.map(risposte =>
-      risposte.id === id ? correctuser.push(risposte.id) : null
-    );
-    console.log("quest: ", correctuser);
-
-    return correctuser;
+  getSumCorrectFunct(id: number) {
+    let count: number = 0;
+    let quiz = this.quizTot.filter(quiz => quiz.id === id)[0];
+    quiz.answersuser.map(answer => {
+      if (answer.correct.toString() === answer.answer.toString()) {
+        count++;
+      }
+    });
+    console.log("Giuste: ", count, " Totale: ", quiz.answersuser.length);
+    return count + "/" + quiz.answersuser.length;
   }
 }
