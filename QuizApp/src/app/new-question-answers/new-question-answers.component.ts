@@ -8,9 +8,12 @@ import { QuestionSenderService } from '../question-sender.service'
 })
 export class NewQuestionAnswersComponent implements OnInit {
 answertype: string = 'radio'
+answerdef: string = 'Risposta singola'
 answervalue: string
 
-  constructor() { }
+  constructor(
+    private qss: QuestionSenderService
+  ) { }
 
 
 
@@ -19,14 +22,15 @@ answervalue: string
 
 onChange(val: string): void {
   this.answertype = val
-  console.log(this.answertype === 'radio')
+  if (this.answertype === 'radio') {
+    this.answerdef = 'Risposta singola'
+  } else if (this.answertype === 'checkbox') {
+    this.answerdef = 'Risposte multiple'
+  } else {
+    this.answerdef = 'Risposta aperta'
+  }
+  this.qss.giveAnswerType(this.answertype)
 }
 
-valueDef(val: string): void {
-  if (val === 'alfabeto') {
-    this.answervalue = 'a'
-  } else {
-    this.answervalue = '1'
-  }
-}
+
 }
