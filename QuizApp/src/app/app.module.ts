@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
+//import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -23,7 +23,6 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
 import {AgmCoreModule} from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { SearchpageComponent } from './searchpage/searchpage.component';
-import { QuestionsComponent } from './questions/questions.component';
 import { SearchquestionsComponent } from './searchquestions/searchquestions.component';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -50,11 +49,8 @@ import { InMemoryDataService } from './in-memory-data.service';
     AppComponent,
     AdminLayoutComponent,
     SearchquestionsComponent,
-<<<<<<< HEAD
-  
 
-=======
->>>>>>> origin/master
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,23 @@
 <div>
-
-  <input type="text" class="search-control" placeholder="ricerca...">
+    <input #searchQues type='text'/>
    <span>
-    <button (click)='search()'>cerca</button>
+    <button  (click)='searchQuestions(searchQues.value)'>cerca</button>
    </span>
 
+    <ul *ngIf="testi">
+      <li *ngFor="let question of testi">
+        {{question.text}}
+        <span>
+          <button (click)=delete(question)>kill</button>
+        </span>
+        <span>
+           <button (click)=edit(question) >modifica</button>
+        </span>
+      </li>
+    </ul>
+    <div *ngIf="testi">
+
+      <input  *ngFor="let question of testi" type='text' value='{{question.id}}'/>
+    </div>
 </div>
+<!-- (input)="searchQuestions(searchQues.value)" -->

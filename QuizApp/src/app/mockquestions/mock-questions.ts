@@ -278,5 +278,5 @@ export const QUESTIONS: Question [] = [
     answertype: 'textarea',
     answers: [],
   },
->>>>>>> origin/master
+
 ];
