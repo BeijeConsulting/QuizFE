@@ -21,7 +21,7 @@ declare interface RouteInfo {
 // { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
 export const ROUTESU: RouteInfo[] = [
     { path: '/user', title: 'Genera Quiz', icon: 'library_books', class: '' },
-    { path: '/user/active', title: 'Quiz Interrotto', icon: 'library_books', class: '' },
+    //{ path: '/user/active', title: 'Quiz Interrotto', icon: 'library_books', class: '' },
     { path: '/user/completed', title: 'Statistiche', icon: 'dashboard', class: 'person' },
     { path: '/login', title: 'Logout', icon: 'person', class: 'person' },
 ];

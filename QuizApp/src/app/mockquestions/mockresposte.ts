@@ -13,17 +13,17 @@ export const COMPLETEDQUIZ: completedQuiz[] = [
       },
       {
         id: 2,
-        answer: ["c"],
+        answer: ["b"],
         correct: ["b"]
       },
       {
         id: 3,
-        answer: ["d"],
+        answer: ["a"],
         correct: ["a"]
       },
       {
         id: 4,
-        answer: ["c"],
+        answer: ["b"],
         correct: ["b"]
       }
     ]
@@ -35,7 +35,7 @@ export const COMPLETEDQUIZ: completedQuiz[] = [
     answersuser: [
       {
         id: 5,
-        answer: ["a"],
+        answer: ["b"],
         correct: ["a"]
       },
       {
@@ -55,13 +55,40 @@ export const COMPLETEDQUIZ: completedQuiz[] = [
       },
       {
         id: 9,
-        answer: ["a"],
+        answer: ["c"],
         correct: ["a"]
       },
       {
         id: 10,
         answer: ["b"],
         correct: ["b"]
+      }
+    ]
+  },
+  {
+    id: 3,
+    data: "08/08/2019",
+    tag: ["colori,animali"],
+    answersuser: [
+      {
+        id: 5,
+        answer: ["a"],
+        correct: ["a"]
+      },
+      {
+        id: 6,
+        answer: ["b", "d"],
+        correct: ["b", "d"]
+      },
+      {
+        id: 7,
+        answer: ["a"],
+        correct: ["a"]
+      },
+      {
+        id: 8,
+        answer: ["a"],
+        correct: ["a", "e"]
       }
     ]
   }

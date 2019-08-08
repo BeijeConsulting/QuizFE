@@ -11,6 +11,7 @@ import { Router, NavigationEnd, NavigationStart } from "@angular/router";
 import { Subscription } from "rxjs/Subscription";
 import PerfectScrollbar from "perfect-scrollbar";
 import * as $ from "jquery";
+import { SidebarService } from "app/sidebar.service";
 
 @Component({
   selector: "app-admin-layout",
@@ -40,7 +41,7 @@ const language = 'typescript';
 ### Blockquote
 > Blockquote to the max`;
 
-  constructor(public location: Location, private router: Router) {}
+  constructor(public location: Location, private router: Router, private sidebarService : SidebarService) {}
 
   ngOnInit() {
     const isWindows = navigator.platform.indexOf("Win") > -1 ? true : false;
@@ -200,5 +201,8 @@ const language = 'typescript';
       bool = true;
     }
     return bool;
+  }
+  getLogin(){
+    return this.sidebarService.getLogin()!=null ? true : false;
   }
 }
