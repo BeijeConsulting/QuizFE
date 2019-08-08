@@ -9,9 +9,9 @@
 <div class="menuSide" *ngIf="quiz">
     <ul>
         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-                    true}" *ngFor="let menuItem of menuItemsQ" class="{{menuItem.class}} nav-item">
+                    true}" *ngFor="let menuItem of menuItemsQ;let i = index" class="{{menuItem.class}} nav-item">
             <a class="nav-link" routerLink="/user/quiz/{{menuItem.id}}">
-                DOMANDA #{{menuItem.id}}
+                DOMANDA #{{i+1}} <span *ngIf="getAnswered(menuItem.id)">ok</span>
             </a>
         </li>
     </ul>

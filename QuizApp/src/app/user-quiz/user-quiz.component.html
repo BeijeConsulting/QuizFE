@@ -6,7 +6,7 @@
           Stai per affrontare un quiz di cultura generale.<br><br>
           Sei pronto?
           <br><br><br>
-          <button class="btn btn-success" [routerLink]="['/user/quiz/1']">INIZIA IL QUIZ</button>
+          <button class="btn btn-success" routerLink="/user/quiz/{{getFirst()}}">INIZIA IL QUIZ</button>
         </div>
       </div>
       <div class="questionBox" *ngIf="question">
@@ -17,29 +17,34 @@
         <div class="answer">
           <div *ngFor="let answer of question.answers;">
             <label>
-              <input *ngIf="question.answertype==='radio'" (change)="addAnswer(question.id)" type="radio" name="answer"
-                value="{{answer.value}}" [attr.checked]="getAnswer(question.id,answer.value) ? 'checked':null" />
-              <input *ngIf="question.answertype==='checkbox'" (change)="addAnswer(question.id)" type="checkbox" name="answer" 
+              <input [attr.type]="question.answertype" (change)="addAnswer(question.id)" type="radio" name="answer"
                 value="{{answer.value}}" [attr.checked]="getAnswer(question.id,answer.value) ? 'checked':null" />
               {{answer.text}}
             </label>
           </div>
-          <textarea *ngIf="question.answertype==='textarea'" id="textarea" (change)="addAnswerArea(question.id)" name="textarea" rows="10" cols="50"
+          <textarea *ngIf="question.answertype==='textarea'" id="textarea" (input)="addAnswerArea(question.id)"
+            name="textarea" rows="10" cols="50"
             placeholder="Inserisci qui la tua risposta...">{{getDefaultArea(question.id)}}</textarea>
         </div>
         <div class="button-quiz">
           <div class="btn-prev">
-            <button *ngIf="question.id>1" class="btn btn-info" (click)="addAnswer(question.id)"
-              routerLink="/user/quiz/{{question.id-1}}">PRECEDENTE</button>
+            <div *ngIf="!getFirstQuestion(question.id)">
+              <button class="btn btn-info" (click)="addAnswer(question.id)"
+                routerLink="/user/quiz/{{getPrevQuestion(question)}}">PRECEDENTE</button>
+            </div>
+
           </div>
           <div class="btn-next">
-            <button *ngIf="question.id<getTotQuestions()" class="btn btn-info" (click)="addAnswer(question.id)"
-              routerLink="/user/quiz/{{question.id+1}}">SUCCESSIVA</button>
+            <div *ngIf="!getLastQuestion(question.id)">
+              <button class="btn btn-info" (click)="addAnswer(question.id)"
+                routerLink="/user/quiz/{{getNextQuestion(question)}}">SUCCESSIVA</button>
+            </div>
           </div>
         </div>
         <div class="button-submit">
-              <button *ngIf="question.id===getTotQuestions()" class="btn btn-success" (click)="clear()" >INVIA QUIZ</button>
-          </div>
+          <button *ngIf="getLastQuestion(question.id)" class="btn btn-success" (click)="clear()">INVIA
+            QUIZ</button>
+        </div>
       </div>
     </div>
   </div>

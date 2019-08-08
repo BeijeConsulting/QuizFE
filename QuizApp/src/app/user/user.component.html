@@ -1,1 +1,9 @@
-<div class="main-content"><app-search-questions></app-search-questions></div>
+<div class="main-content">
+    <h2 class="center">Genera il tuo Quiz!</h2>
+    <h4 class="center">In questa sezione puoi personalizzare il tuo quiz in base alla scelta dei tag.</h4>
+    <app-search-questions></app-search-questions>
+    <div class="counter-search" *ngIf="getCounter()">
+        <div class="found">Domande trovate: {{getTotQuestions()}}</div>
+        <button class="btn btn-success" [routerLink]="['/user/quiz']">GENERA QUIZ</button>
+    </div>
+</div>

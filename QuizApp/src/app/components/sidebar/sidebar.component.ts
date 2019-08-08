@@ -20,17 +20,16 @@ declare interface RouteInfo {
 // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
 // { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
 export const ROUTESU: RouteInfo[] = [
-    { path: '/login', title: 'Login', icon: 'person', class: 'person' },
-    { path: '/user', title: 'Crea Quiz', icon: 'library_books', class: '' },
-    { path: '/user/active', title: 'Riprendi quiz interrotto', icon: 'library_books', class: '' },
+    { path: '/user', title: 'Genera Quiz', icon: 'library_books', class: '' },
+    { path: '/user/active', title: 'Quiz Interrotto', icon: 'library_books', class: '' },
     { path: '/user/completed', title: 'Statistiche', icon: 'dashboard', class: 'person' },
-    { path: '/user/quiz', title: 'Quiz', icon: 'quiz', class: 'quiz' },
+    { path: '/login', title: 'Logout', icon: 'person', class: 'person' },
 ];
 
 export const ROUTESA: RouteInfo[] = [
-    { path: '/login', title: 'Login', icon: 'person', class: 'person' },
-    { path: '/admin', title: 'Home', icon: 'dashboard', class: 'dashboard' },
+    { path: '/admin', title: 'Ricerca Domande', icon: 'dashboard', class: 'dashboard' },
     { path: '/admin/new', title: 'Nuova domanda', icon: 'dashboard', class: 'person' },
+    { path: '/login', title: 'Logout', icon: 'person', class: 'person' },
 ]
 
 @Component({
@@ -41,7 +40,7 @@ export const ROUTESA: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
     menuItemsA: any[];
     menuItemsU: any[];
-    menuItemsQ= QUESTIONS.filter(menuItemsQ => menuItemsQ);
+    menuItemsQ: any[];
     admin: boolean = null;
     quiz: boolean = false;
     url : string;
@@ -50,19 +49,25 @@ export class SidebarComponent implements OnInit {
         private router: Router,
         private quizService : QuizService,
         private route: ActivatedRoute,
-    ) {
-        router.events.subscribe((val) => {
-            val instanceof NavigationEnd ? 
-            (val.url.indexOf('/user/quiz')===0 ? this.quiz=true : this.quiz=false ) : this.quiz=false;
-        });
-     }
+    ) {}
 
     ngOnInit() {
         this.menuItemsA = ROUTESA.filter(menuItemsA => menuItemsA);
         this.menuItemsU = ROUTESU.filter(menuItemsU => menuItemsU);
-        this.route.params.subscribe(routeParams => {
-            console.log(routeParams)
+        this.router.events.subscribe((val) => {
+            val instanceof NavigationEnd ? 
+            (val.url.indexOf('/user/quiz')===0 ? 
+            this.setQuiz() : this.clearQuiz() ) : this.quiz=false;
         });
+    }
+    setQuiz(){
+        this.quiz=true;
+        this.menuItemsQ = this.quizService.getQuestions();     
+    }
+    clearQuiz(){
+        this.quiz=false;
+        this.menuItemsQ = [];
+        this.quizService.clearQuiz();        
     }
     getLogin():boolean {
         this.admin = this.sidebarservice.getLogin()
@@ -74,6 +79,9 @@ export class SidebarComponent implements OnInit {
         }
         return true;
     };
+    getAnswered(id:number){
+        return this.quizService.getAnswered(id)
+    }
     clear(){
         this.quizService.clear();
     }
