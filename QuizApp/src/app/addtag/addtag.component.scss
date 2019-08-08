@@ -4,20 +4,16 @@
 }
 
 .MainContainer {
-  width: 50%;
-  height: 230px;
+  width: 80%;
+  margin: auto;
   background-color: #fff;
   border: none;
   border-radius: 8px;
-  margin: 16px;
   margin-bottom: 100px;
-  -webkit-box-shadow: -7px 0px 48px -30px rgba(0,0,0,1);
-  -moz-box-shadow: -7px 0px 48px -30px rgba(0,0,0,1);
-  box-shadow: -7px 0px 48px -30px rgba(0,0,0,1);
+  box-shadow: -7px 0px 48px -30px black;
 }
 .header{
   margin-bottom: 8px;
-  height: 20%;
   background-color: #9c27b0 ;
   border: none;
   border-radius: 8px 8px 0px 0px;
