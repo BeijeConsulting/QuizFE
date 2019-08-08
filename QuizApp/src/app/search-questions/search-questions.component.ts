@@ -43,10 +43,8 @@ export class SearchQuestionsComponent implements OnInit {
   }
 
   searchQuestions() {
-    // this.searchBarValue ? this.searchedTags.push(this.searchBarValue) : null;
     this.questionService.searchQuestions(this.searchedTags).subscribe(res => {this.questions = res;})
     this.searchBarValue = '';
-   // this.searchedTags = [];
   }
 
   deleteQuestion(question: Question){
