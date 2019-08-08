@@ -11,7 +11,9 @@
         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:
                     true}" *ngFor="let menuItem of menuItemsQ;let i = index" class="{{menuItem.class}} nav-item">
             <a class="nav-link" routerLink="/user/quiz/{{menuItem.id}}">
-                DOMANDA #{{i+1}} <span *ngIf="getAnswered(menuItem.id)">ok</span>
+                DOMANDA #{{i+1}} <span *ngIf="getAnswered(menuItem.id)" class="answered"><i class="material-icons">
+                        check_circle_outline
+                        </i></span>
             </a>
         </li>
     </ul>

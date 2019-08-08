@@ -40,7 +40,7 @@ export class QuizService {
     return area;
   }
   getAnswered(id:number){
-    let questFind = this.answers.find(item=>item.id===id);
+    let questFind = this.answers.length>0 ? this.answers.find(item=>item.id===id) : null;
     return questFind ? questFind.answerValue.length>0&&questFind.answerValue[0]!="" : false;
   }
   clear() {
@@ -70,7 +70,7 @@ export class QuizService {
     return this.questions;
   }
   getFirstQuest(){
-    return this.questions[0].id;
+    return this.questions.length>0 ? this.questions[0].id : null;
   }
   getLastQuest(){
     return this.questions[this.questions.length-1].id;

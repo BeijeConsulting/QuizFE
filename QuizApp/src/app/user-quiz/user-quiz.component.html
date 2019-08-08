@@ -15,11 +15,14 @@
         </div>
         <div *ngIf="question.answertype==='checkbox'" class="checkInfo">(*più risposte sono corrette)</div>
         <div class="answer">
-          <div *ngFor="let answer of question.answers;">
-            <label>
-              <input [attr.type]="question.answertype" (change)="addAnswer(question.id)" type="radio" name="answer"
+          <div *ngFor="let answer of question.answers;" [attr.class]="question.answertype==='checkbox' ? 'form-check' : 'form-check form-check-radio'">
+            <label class="form-check-label">
+              <input class="form-check-input" [attr.type]="question.answertype" (change)="addAnswer(question.id)" type="radio" name="answer"
                 value="{{answer.value}}" [attr.checked]="getAnswer(question.id,answer.value) ? 'checked':null" />
-              {{answer.text}}
+                <span [attr.class]="question.answertype==='checkbox' ? 'form-check-sign' : 'circle'">
+                  <span class="check"></span>
+                </span>
+              <div class="span-check">{{answer.text}}</div>
             </label>
           </div>
           <textarea *ngIf="question.answertype==='textarea'" id="textarea" (input)="addAnswerArea(question.id)"

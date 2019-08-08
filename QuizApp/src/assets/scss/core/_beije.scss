@@ -71,6 +71,32 @@
     width: 100%;
     text-align: center;
   }
+  .span-check{
+    margin-top:-6px;
+  }
+  .questionBox {
+    width: 100%;
+    .answer {
+        padding: 50px;
+        font-size: 20px;
+    }
+    .question {
+        font-size: 30px;
+        text-align: center;
+        font-weight: bold;
+        line-height: normal;
+    }
+    input{
+        margin-bottom:20px;
+    }
+    textarea {
+        width: 100%;
+    }
+    .checkInfo{
+        text-align: center;
+        margin-top:10px;
+    }
+  }
 }
 .counter-search {
   width: 100%;
@@ -79,6 +105,12 @@
 }
 .center {
   text-align: center;
+}
+.answered{
+  .material-icons {
+    color: green;
+    float: right;
+  }
 }
 
 @media screen and (max-width: 1000px) {
