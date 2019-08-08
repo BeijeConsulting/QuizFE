@@ -1,0 +1,13 @@
+<div *ngFor="let item of count" [attr.class]="answer==='checkbox' ? 'form-check' : 'form-check form-check-radio'">
+  <label class="form-check-label">
+    <input class="form-check-input" name="answer" [attr.type]="answer" (change)="addToArray()"/>
+    <span [attr.class]="answer==='checkbox' ? 'form-check-sign' : 'circle'">
+      <span class="check"></span>
+    </span>
+    <input class="form-control" name="input" type="text" (input)="addToArray()" /><button *ngIf="count.length > 2" (click)="delInput(item)" class="btn btn-danger">X</button>
+  </label>
+</div>
+<button (click)="addAnswer()" class="btn btn-success">+</button>
+
+
+
