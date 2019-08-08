@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output } from "@angular/core";
 import { Question } from "../mockquestions/question";
 import { QuestionsService } from "../questions.service";
-
+import { SidebarService} from "../sidebar.service";
 @Component({
   selector: "app-search-questions",
   templateUrl: "./search-questions.component.html",
@@ -14,7 +14,7 @@ export class SearchQuestionsComponent implements OnInit {
   foundTags: string[];
   searchedTags: string[] = [];
 
-  constructor(private questionService: QuestionsService) {}
+  constructor(private questionService: QuestionsService, private sidebarService: SidebarService) {}
 
   ngOnInit() {
     this.getTags();
@@ -59,5 +59,9 @@ export class SearchQuestionsComponent implements OnInit {
     }else {
       this.questions = []
     }
+  }
+
+  getLogin() {
+    return this.sidebarService.getLogin();
   }
 }

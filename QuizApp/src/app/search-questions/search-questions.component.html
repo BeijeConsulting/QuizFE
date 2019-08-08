@@ -14,8 +14,10 @@
     <button (click)=deleteTag(tag)>x</button>
   </li>
 </ul>
-<ul class='searched-questions' *ngIf="questions">
-  <li *ngFor='let question of questions'>
-    {{question.text}} <button (click)='deleteQuestion(question)'>delete</button>
-  </li>
-</ul>
+<div *ngIf='getLogin()'>
+  <ul class='searched-questions' *ngIf="questions">
+    <li *ngFor='let question of questions'>
+      {{question.text}} <button (click)='deleteQuestion(question)'>delete</button>
+    </li>
+  </ul>
+</div>
