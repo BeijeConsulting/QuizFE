@@ -24,12 +24,8 @@ export class QuestionsService {
   getTags(): Observable<string[]> {
     return this.http.get<string[]>(this.tagsUrl)
   }
-  searchTag(term: string) {
-/*    if (!term.trim()) {
-      // if not search term, return empty hero array.
-      return of([]);
-    }
-    return this.http.get<string[]>(`${this.tagsUrl}?tag=${term}`)*/
-
+  searchQuestions(tagValue: string[]): Observable<Question[]>{
+    console.log(this.questionsUrl + '?tag=' + tagValue.join('&tag='))
+    return this.http.get<Question[]>(this.questionsUrl + '?tag=' + tagValue.join('&tag='))
   }
 }

@@ -13,6 +13,8 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { AdminComponent } from '../../admin/admin.component'
 import { MarkdownModule } from 'ngx-markdown';
+import { SearchQuestionsComponent } from '../../search-questions/search-questions.component';
+
 
 import {
   MatButtonModule,
@@ -70,7 +72,8 @@ import { AddtagComponent } from '../../addtag/addtag.component';
     NewQuestionTextComponent,
     NewQuestionAnswersComponent,
     NewQuestionAnswerInputsComponent,
-    AddtagComponent
+    AddtagComponent,
+    SearchQuestionsComponent
   ]
 })
 export class AdminLayoutModule { }
