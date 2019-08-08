@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Answer, Question } from './mockquestions/question';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionSenderService {
+  questions: Question[]
   question: Question = {
     id: 0,
     tag: [],
@@ -19,7 +21,9 @@ export class QuestionSenderService {
   $answertype = new BehaviorSubject<string>('');
   $answers = new BehaviorSubject<Answer[]>([{ value: '', text: '', correct: null }])
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   getAnswerType(): Observable<string> {
     return this.$answertype.asObservable()
@@ -98,7 +102,8 @@ for(let i=0; i < this.question.answers.length;i++) {
     }
     let ok = window.confirm('Carico la domanda?')
     if (ok === true) {
-      console.warn(this.question)
+      this.fetch(this.question).subscribe(res => this.load())
+      // this.load().subscribe(res => console.log(res))
       this.emptyQuestion()
     } else {
       return
@@ -114,6 +119,20 @@ for(let i=0; i < this.question.answers.length;i++) {
       answers: [],
     }
     console.log(this.question)
+  }
+
+  fetch(question: Question): Observable<Question> {
+    const questionurl = 'api/questions'
+    const httpHeader = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json'
+      })
+    }
+    return this.http.post<Question>(questionurl, question, httpHeader)
+  }
+
+  load(): void {
+     this.http.get<Question[]>('api/questions').subscribe(res => console.log(res));
   }
 
 }
