@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bda66293-a914-42ac-ae04-e7c5798c6c0c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuizApp/src/app/addtag/addtag.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/QuizApp/src/app/addtag/addtag.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuizApp/src/app/addtag/addtag.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/QuizApp/src/app/addtag/addtag.component.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/QuizApp/src/app/addtag/addtag.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="740">
-              <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+            <state relative-caret-position="739">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
               </folding>
@@ -30,10 +28,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/QuizApp/src/app/login/login.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="27">
+              <caret line="2" column="56" lean-forward="true" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/QuizApp/src/app/addtag/addtag.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+            <state relative-caret-position="572">
+              <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
               <folding>
                 <element signature="e#443#449#0" expanded="true" />
               </folding>
@@ -44,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/QuizApp/src/app/addtag/addtag.component.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="88" selection-end-column="1" />
+            <state relative-caret-position="1804">
+              <caret line="82" selection-start-line="82" selection-end-line="88" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -66,6 +76,7 @@
         <option value="$PROJECT_DIR$/QuizApp/src/app/addtag/addtag.component.ts" />
         <option value="$PROJECT_DIR$/QuizApp/src/app/addtag/addtag.component.scss" />
         <option value="$PROJECT_DIR$/QuizApp/src/app/addtag/addtag.component.html" />
+        <option value="$PROJECT_DIR$/QuizApp/src/app/login/login.component.ts" />
       </list>
     </option>
   </component>
@@ -79,6 +90,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -110,7 +122,7 @@
               <item name="QuizApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="addtag" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="QuizFE" type="b2602c69:ProjectViewProjectNode" />
@@ -118,13 +130,12 @@
               <item name="QuizApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -138,6 +149,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/QuizApp/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
@@ -171,22 +183,22 @@
       <workItem from="1564756351825" duration="2916000" />
       <workItem from="1564988994698" duration="1234000" />
       <workItem from="1565086688960" duration="14165000" />
-      <workItem from="1565162933492" duration="7051000" />
+      <workItem from="1565162933492" duration="9278000" />
+      <workItem from="1565185555062" duration="2308000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36648000" />
+    <option name="totallyTimeSpent" value="41183000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1031" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.24708377" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.24708377" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49893954" visible="true" weight="0.21749409" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" sideWeight="0.49893954" visible="true" weight="0.22813238" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5010604" side_tool="true" weight="0.21749409" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
@@ -308,29 +320,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/QuizApp/src/app/addtag/addtag.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1804">
+          <caret line="82" selection-start-line="82" selection-end-line="88" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QuizApp/src/app/addtag/addtag.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+          <folding>
+            <element signature="e#443#449#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/QuizApp/src/app/addtag/addtag.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+        <state relative-caret-position="739">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QuizApp/src/app/addtag/addtag.component.scss">
+    <entry file="file://$PROJECT_DIR$/QuizApp/node_modules/@angular-devkit/build-angular/src/angular-cli-files/utilities/check-port.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="88" selection-end-column="1" />
+        <state relative-caret-position="203">
+          <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QuizApp/src/app/addtag/addtag.component.html">
+    <entry file="file://$PROJECT_DIR$/QuizApp/src/app/login/login.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+        <state relative-caret-position="27">
+          <caret line="2" column="56" lean-forward="true" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="56" />
           <folding>
-            <element signature="e#443#449#0" expanded="true" />
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
