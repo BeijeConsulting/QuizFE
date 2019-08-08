@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SidebarService {
 admin: boolean = null;
+quiz: boolean = false;
   constructor() { }
   getLogin() {
     return this.admin

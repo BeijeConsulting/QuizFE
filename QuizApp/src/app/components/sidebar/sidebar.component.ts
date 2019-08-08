@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {SidebarService} from '../../sidebar.service';
+import { SidebarService } from '../../sidebar.service';
+import { QUESTIONS } from '../../mockquestions/mock-questions'
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router'
+import { QuizService } from 'app/quiz.service';
 
 declare const $: any;
 declare interface RouteInfo {
-    path: string;
-    title: string;
-    icon: string;
-    class: string;
+  path: string;
+  title: string;
+  icon: string;
+  class: string;
 }
 // { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
 // { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
@@ -17,44 +20,61 @@ declare interface RouteInfo {
 // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
 // { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
 export const ROUTESU: RouteInfo[] = [
-    { path: '/login', title: 'Login',  icon: 'person', class: 'person' },
-    { path: '/user', title: 'Home', icon: 'dashboard', class: 'dashboard'},
-    { path: '/user/active', title: 'Riprendi quiz interrotto',  icon: 'dashboard', class: 'person' },
-    { path: '/user/completed', title: 'Statistiche',  icon: 'dashboard', class: 'person' },
+    { path: '/login', title: 'Login', icon: 'person', class: 'person' },
+    { path: '/user', title: 'Crea Quiz', icon: 'library_books', class: '' },
+    { path: '/user/active', title: 'Riprendi quiz interrotto', icon: 'library_books', class: '' },
+    { path: '/user/completed', title: 'Statistiche', icon: 'dashboard', class: 'person' },
+    { path: '/user/quiz', title: 'Quiz', icon: 'quiz', class: 'quiz' },
 ];
 
 export const ROUTESA: RouteInfo[] = [
-    { path: '/login', title: 'Login',  icon: 'person', class: 'person' },
-    { path: '/admin', title: 'Home', icon: 'dashboard', class: 'dashboard'},
-    { path: '/admin/new', title: 'Nuova domanda',  icon: 'dashboard', class: 'person' },
+    { path: '/login', title: 'Login', icon: 'person', class: 'person' },
+    { path: '/admin', title: 'Home', icon: 'dashboard', class: 'dashboard' },
+    { path: '/admin/new', title: 'Nuova domanda', icon: 'dashboard', class: 'person' },
 ]
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+    selector: 'app-sidebar',
+    templateUrl: './sidebar.component.html',
+    styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  menuItemsA: any[];
-  menuItemsU: any[];
-  admin: boolean = null
-  constructor(private sidebarservice: SidebarService) { }
+    menuItemsA: any[];
+    menuItemsU: any[];
+    menuItemsQ= QUESTIONS.filter(menuItemsQ => menuItemsQ);
+    admin: boolean = null;
+    quiz: boolean = false;
+    url : string;
+    constructor(
+        private sidebarservice: SidebarService,
+        private router: Router,
+        private quizService : QuizService,
+        private route: ActivatedRoute,
+    ) {
+        router.events.subscribe((val) => {
+            val instanceof NavigationEnd ?
+            (val.url.indexOf('/user/quiz')===0 ? this.quiz=true : this.quiz=false ) : this.quiz=false;
+        });
+     }
 
-  ngOnInit() {
-    this.menuItemsA = ROUTESA.filter(menuItemsA => menuItemsA);
-    this.menuItemsU = ROUTESU.filter(menuItemsU => menuItemsU);
-  }
-
-
-  getLogin() {
-      this.admin = this.sidebarservice.getLogin()
-      return this.admin
-  }
-
-  isMobileMenu() {
-      if ($(window).width() > 991) {
-          return false;
-      }
-      return true;
-  };
+    ngOnInit() {
+        this.menuItemsA = ROUTESA.filter(menuItemsA => menuItemsA);
+        this.menuItemsU = ROUTESU.filter(menuItemsU => menuItemsU);
+        this.route.params.subscribe(routeParams => {
+            console.log(routeParams)
+        });
+    }
+    getLogin():boolean {
+        this.admin = this.sidebarservice.getLogin()
+        return this.admin
+    }
+    isMobileMenu() {
+        if ($(window).width() > 991) {
+            return false;
+        }
+        return true;
+    };
+    clear(){
+        this.quizService.clear();
+    }
 }

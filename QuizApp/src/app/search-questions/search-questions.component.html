@@ -1,0 +1,21 @@
+<div class="search-container">
+  <input [(ngModel)]='searchBarValue' type='text' (input)='searchTags()' (keyup)='addTag($event)'>
+  <ul class="found-tags" *ngIf='searchBarValue'>
+    <li *ngFor='let tag of foundTags' (click)='addTag($event, tag)'>
+      {{tag}}
+    </li>
+  </ul>
+</div>
+<br />
+<br />
+<ul class="searched-tags" *ngIf='searchedTags'>
+  <li *ngFor='let tag of searchedTags'>
+    {{tag}}
+    <button (click)=deleteTag(tag)>x</button>
+  </li>
+</ul>
+<ul class='searched-questions' *ngIf="questions">
+  <li *ngFor='let question of questions'>
+    {{question.text}} <button (click)='deleteQuestion(question)'>delete</button>
+  </li>
+</ul>

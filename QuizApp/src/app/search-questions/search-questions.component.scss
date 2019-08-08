@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+}
+
+
+input {
+    width: 80%;
+    margin-left: 10%;
+    border: none;
+    height: 45px;
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 18px;
+    box-sizing: border-box;
+    &:focus {
+        border: 1px solid #777;
+    }
+}
+
+.found-tags {
+    width: calc(80% - 16px);
+    margin-left: calc(10% + 8px);
+    list-style: none;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    z-index: 10;
+    li {
+        width: 100%;
+        height: 45px;
+        padding: 5px;
+        line-height: 35px;
+        vertical-align: middle;
+        font-size: 18px;
+        border-left: 1px solid #777;
+        border-right: 1px solid #777;
+        border-bottom: 1px solid #777;
+        font-weight: bold;
+        background-color: white;
+        cursor: pointer;
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+}
+
+.searched-tags {
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+    list-style: none;
+
+    li {
+        height: 40px;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        background-color: #c1ddf0;
+        color: #fff;
+        margin-right: 10px;
+        &:hover {
+            background-color: #6fbff5
+        }
+        button {
+            background: none;
+            margin-left: 5px;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+        }
+    }
+}
+
+.searched-questions {
+    width: 80%;
+    margin-left: 10%;
+    list-style: none;
+    li {
+        display: flex;
+        justify-content: space-between;
+        height: 50px;
+        line-height: 50px;
+        vertical-align: middle;
+        font-size: 20px;
+        border: 1px solid #777;
+        background-color: white;
+
+        button {
+            color: white;
+            background-color: red;
+            border: none;
+            padding-left: 4px;
+            padding-right: 4px; 
+        }
+    }
+}
