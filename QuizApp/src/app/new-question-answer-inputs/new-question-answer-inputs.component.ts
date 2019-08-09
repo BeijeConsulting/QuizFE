@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormArray } from '@angular/forms';
 import { QuestionSenderService } from '../question-sender.service'
 import { Answer } from 'app/mockquestions/question';
-import { count } from 'rxjs/operators';
+import { QuestionsService } from '../questions.service'
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,27 +12,49 @@ import { count } from 'rxjs/operators';
   styleUrls: ['./new-question-answer-inputs.component.scss']
 })
 export class NewQuestionAnswerInputsComponent implements OnInit {
+  @Input() edit
   count = [0,1]
+
   contatore: number = 1
   correct: boolean[] = []
   input: string[] = []
   answers: Answer[] = []
+  subscription: Subscription
 
   constructor(private fb: FormBuilder,
-    private qss: QuestionSenderService) { }
+    private qss: QuestionSenderService,
+    private qs: QuestionsService) {
+
+     }
   @Input() answer: string
   @Input() value: string
   ngOnInit() {
-    // for(let i=0; i< this.input.length; i++) {
-    //   this.radio.push(false)
-    //   this.check.push(false)
+    if (this.edit) {
+      this.count = []
+      this.contatore = -1
+      this.qs.question.answers.forEach(answer => {
+        this.addAnswer()
+        this.answers.push(answer)
+        console.log(this.answers)
+        this.qss.giveAnswers(this.answers)
+      })
+      
+    }
+
+    }
+
+    getcheck(count) {
+      if (this.edit) {
+        return this.answers[count].correct
+      } else {return false}
     }
   
 
   addAnswer() {
     this.contatore++
     this.count.push(this.contatore)
-    this.addToArray()
+    
+    !this.edit ? this.addToArray() : null
   } 
   delInput(i) {
     this.count = this.count.filter(item => item !== i)
@@ -47,9 +70,10 @@ export class NewQuestionAnswerInputsComponent implements OnInit {
     console.log(this.input)
     this.generateAnswer()
   }
+ 
 
-  generateAnswer() {
-    this.answers = [] 
+  generateAnswer() { 
+    
     for(let i:number = 0; i < this.count.length; i++) {
       this.answers[i] = {
         value: i.toString(),
@@ -65,42 +89,5 @@ export class NewQuestionAnswerInputsComponent implements OnInit {
 }
 
 
-//   generateAnswer() {
-//     let corr: boolean[]
-//     console.log(this.answer)
-//     if (this.answer==='radio') {
-      
-//       corr = this.radio
-//     } else {
-//       corr = this.check
-//     }
-//     for(let a: number =0;a < this.input.length; a++) {
-//       let b = a.toString()
-//       console.log(this.value)
-//       if (this.value === 'a') {
-//         this.answers[a] = {
-//           value: this.alf[a],
-//           text: this.ans[a],       
-//           correct: corr[a]
-//         }
-//       } else {
-//         this.answers[a] = {
-//           value: b,
-//           text: this.ans[a],
-//           correct: corr[a]
-//         }
-//       }
-//     }
-    
-//     return this.answers
-//   }
 
-//   loadAnswers() {
-//     this.generateAnswer()
-//     this.qss.giveAnswers(this.answers)
-//   }
-
-//   update(ev, i) {
-//     this.ans[i] = ev
-//     this.loadAnswers()
-//   
+ 

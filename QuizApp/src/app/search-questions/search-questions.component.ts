@@ -12,7 +12,8 @@ import { QuizService } from "app/quiz.service";
 
 export class SearchQuestionsComponent implements OnInit {
   @Input() searchBarValue: string;
-  questions: Question[];
+  edit: boolean = false;
+  questions: Question[] = [];
   tags: string[];
   foundTags: string[];
   searchedTags: string[] = [];
@@ -78,5 +79,13 @@ export class SearchQuestionsComponent implements OnInit {
 
   getLogin() {
     return this.sidebarService.getLogin();
+  }
+
+  editQuestion(question: Question): void {
+    this.edit = true
+    this.questionService.editQuestion(question)
+  }
+  clearEdit(){
+    this.edit=false;
   }
 }

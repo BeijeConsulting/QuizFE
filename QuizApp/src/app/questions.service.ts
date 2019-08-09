@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: "root"
 })
 export class QuestionsService {
-
+question: Question 
   questionsUrl = 'api/questions';
   tagsUrl = 'api/tags';
 
@@ -37,5 +37,8 @@ export class QuestionsService {
   deleteQuestion(question: Question): Observable<{}> {
     const url = this.questionsUrl + '/' + question.id;
     return this.http.delete(url, httpOptions)
+  }
+  editQuestion(data) {
+    this.question = data
   }
 }

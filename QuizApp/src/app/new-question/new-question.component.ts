@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionSenderService } from '../question-sender.service'
 import { Answer } from 'app/mockquestions/question';
+import {Input} from '@angular/core'
+import { QuestionsService } from '../questions.service'
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -9,22 +11,35 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./new-question.component.scss']
 })
 export class NewQuestionComponent implements OnInit {
-answers: Answer[]
+@Input() edit: boolean = false
+  answers: Answer[]
 
   constructor(
     private questionsenderService: QuestionSenderService,
+    private questionsService: QuestionsService
   ) {
       }
 
 
   ngOnInit() {
+    if (this.edit) {
+      this.questionsenderService.question.id = this.questionsService.question.id
+    }
   }
-  stampaaschermo() {
+
+  emptyQuestion() {
+    this.questionsenderService.emptyQuestion()
+  }
+
+  
+
+  submit(cond) {
+    if (cond) {
     console.log(this.answers)
-    this.questionsenderService.getTag().subscribe(tag => console.log(tag))
-    this.questionsenderService.getText().subscribe(text => console.log(text))
-    this.questionsenderService.getAnswers().subscribe(myMessage => console.log(myMessage))
     this.questionsenderService.submit()
+  } else {
+    this.questionsenderService.update()
+  }
   }
 
 }

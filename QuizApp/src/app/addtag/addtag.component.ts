@@ -1,6 +1,8 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import { QuestionsService } from '../questions.service';
 import { QuestionSenderService } from '../question-sender.service'
+import {Observable, Subject, Subscription} from 'rxjs';
+import {Question} from '../mockquestions/question'
 
 @Component({
   selector: 'app-addtag',
@@ -10,14 +12,23 @@ import { QuestionSenderService } from '../question-sender.service'
 
 export class AddtagComponent implements OnInit {
   @Input() tagAdded;
+  @Input() edit = false
+  subscription: Subscription
+  
+  questions: Question[];
   newtags: string[] = [];
   tags: string[];
   searchedTags: string[];
   constructor(private qs: QuestionsService,
-              private qss: QuestionSenderService) { }
+    private qss: QuestionSenderService) {
+     
+     }
 
   ngOnInit() {
     this.getTags();
+    if (this.edit) {
+      this.qs.question.tag.map(tag => this.newtags.push(tag))
+    }
   }
 
   getTags(): void {
