@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: "root"
 })
 export class QuestionsService {
-
+question: Question 
   questionsUrl = 'api/questions';
   tagsUrl = 'api/tags';
 
@@ -40,10 +40,7 @@ export class QuestionsService {
     const url = this.questionsUrl + '/' + question.id;
     return this.http.delete(url, httpOptions)
   }
-
-  updateQuestion(id: number): void {
-    
-    this.$editableQuestion = this.http.get<Question>(this.questionsUrl + '/' + id);
-
+  editQuestion(data) {
+    this.question = data
   }
 }

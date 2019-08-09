@@ -1,21 +1,28 @@
 import { Component, OnInit, Input, Output } from "@angular/core";
 import { Question } from "../mockquestions/question";
 import { QuestionsService } from "../questions.service";
-import { SidebarService} from "../sidebar.service";
+import { SidebarService } from "../sidebar.service";
+import { QuizService } from "app/quiz.service";
+
 @Component({
   selector: "app-search-questions",
   templateUrl: "./search-questions.component.html",
   styleUrls: ["./search-questions.component.scss"]
 })
+
 export class SearchQuestionsComponent implements OnInit {
   @Input() searchBarValue: string;
-  edit:boolean;
-  questions: Question[];
+  edit: boolean = false;
+  questions: Question[] = [];
   tags: string[];
   foundTags: string[];
   searchedTags: string[] = [];
 
-  constructor(private questionService: QuestionsService, private sidebarService: SidebarService) {}
+  constructor(
+    private questionService: QuestionsService, 
+    private sidebarService: SidebarService,
+    private quizService : QuizService
+    ) {}
 
   ngOnInit() {
     this.getTags();
@@ -36,14 +43,19 @@ export class SearchQuestionsComponent implements OnInit {
     if (tag || e.code === "Enter" || e.code === "Space") {
       if (toAdd && this.searchedTags.indexOf(toAdd) === -1) {
         this.searchedTags.push(toAdd);
-        this.searchQuestions();
+          this.searchQuestions();
       }
       this.searchBarValue = "";
     }
   }
 
   searchQuestions() {
-    this.questionService.searchQuestions(this.searchedTags).subscribe(res => {this.questions = res;})
+    this.questionService.searchQuestions(this.searchedTags).subscribe(res => {
+      this.questions = res;
+      if (!this.getLogin()){
+        this.quizService.addQuiz(this.questions);
+      }
+    })
     this.searchBarValue = '';
   }
 
@@ -57,6 +69,9 @@ export class SearchQuestionsComponent implements OnInit {
       this.searchQuestions();
     }else {
       this.questions = []
+      if (!this.getLogin()){
+        this.quizService.clearQuiz();
+      }
     }
   }
 
@@ -64,8 +79,11 @@ export class SearchQuestionsComponent implements OnInit {
     return this.sidebarService.getLogin();
   }
 
-  updateQuestion(id: number) {
-    this.edit = true;
-    this.questionService.updateQuestion(id);
+  editQuestion(question: Question): void {
+    this.edit = true
+    this.questionService.editQuestion(question)
+  }
+  clearEdit(){
+    this.edit=false;
   }
 }

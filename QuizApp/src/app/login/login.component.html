@@ -1,5 +1,11 @@
-<div class="main-content">
-<a routerLink="/user"><button (click)="setLogin(false)" class="btn btn-primary btn-round">User</button></a>
-<a routerLink="/admin"><button (click)="setLogin(true)" class="btn btn-primary btn-round">Admin</button></a>
+<div class="main-content login">
+    <div>
+        <h2 class="center">Effettua il login</h2>
+        <div class="box-login-btn">
+            <a routerLink="/user"><button (click)="setLogin(false)"
+                    class="btn btn-primary btn-round login">User</button></a>
+            <a routerLink="/admin"><button (click)="setLogin(true)"
+                    class="btn btn-primary btn-round login">Admin</button></a>
+        </div>
+    </div>
 </div>
-

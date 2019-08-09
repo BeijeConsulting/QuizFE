@@ -46,9 +46,9 @@ export class CompletedDetailsComponent implements OnInit {
     this.quest = null;
   }
   userAnswer(val) {
-    let answersUser = this.quiz.answersuser.filter(
+    let answersUser = this.quiz.answersuser.find(
       item => item.id === this.quest.id
-    )[0];
+    );    
     return answersUser.answer.indexOf(val) != -1;
   }
   getCorrect(id: number) {

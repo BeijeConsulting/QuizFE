@@ -1,6 +1,14 @@
 <div class="main-content">
-    <app-addtag></app-addtag>
-    <app-new-question-text></app-new-question-text>
-    <app-new-question-answers></app-new-question-answers>
-    <button class="btn btn-danger">Annulla</button> <button (click)="stampaaschermo()" class="btn btn-success">Aggiungi domanda</button>
+    <h2 class="center">Aggiungi una nuova domanda</h2>
+    <app-addtag [edit]="edit"></app-addtag>
+    <app-new-question-text [edit]="edit"></app-new-question-text>
+    <app-new-question-answers [edit]="edit"></app-new-question-answers>
+    <div class="buttons-container">
+        <button class="btn btn-danger" (click)="emptyQuestion()" routerLink="/admin">Annulla</button>
+        <button *ngIf="!edit; else mod" (click)="submit(true)" class="btn btn-success">Aggiungi domanda</button>
+        <ng-template #mod>
+                <button (click)="submit(false)" class="btn btn-success">Modifica domanda</button>
+        </ng-template>
+       
+    </div>
 </div>

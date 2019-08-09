@@ -1,12 +1,9 @@
 <div class="MainContainer">
-    <div class="header">
+    <!-- <div class="header">
         <div class="header__title">
             Inserimento Tag
         </div>
-    </div>
-    <div class="middle-content">
-        <div class="Aggiunti"> Tag Aggiunti</div>
-    </div>
+    </div> -->
     <div class="InputText">
         <div class="InputText__Aggiunti">
             <div class="NuoviTags" *ngIf="newtags">
@@ -17,14 +14,14 @@
             </div>
         </div>
         <div class="InputText__InputField">
-            <ul class="DefaultTags" *ngIf="tagAdded">
-                <li *ngFor="let tag of searchedTags" (click)="selectTag(tag); tagAdded=''">{{tag}}</li>
-            </ul>
-            <input [(ngModel)]="tagAdded"
-                   (input)="search()"
-                   type="text" placeholder="Inserisci tags..."
-                   (keyup)="addNewTag($event);">
+            <div class="ul-container">
+                <ul class="DefaultTags" *ngIf="tagAdded">
+                    <li *ngFor="let tag of searchedTags" (click)="selectTag(tag); tagAdded=''">{{tag}}</li>
+                </ul>
+            </div>
+
+            <input [(ngModel)]="tagAdded" (input)="search()" type="text" placeholder="Inserisci tags..."
+                (keyup)="addNewTag($event)">
         </div>
     </div>
 </div>
-

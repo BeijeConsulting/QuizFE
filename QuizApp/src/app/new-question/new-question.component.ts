@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { QuestionSenderService } from '../question-sender.service'
 import { QuestionsService } from '../questions.service';
 import { Answer } from 'app/mockquestions/question';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-new-question',
@@ -9,8 +10,8 @@ import { Answer } from 'app/mockquestions/question';
   styleUrls: ['./new-question.component.scss']
 })
 export class NewQuestionComponent implements OnInit {
-answers: Answer[]
-@Input() miagolo= false;
+@Input() edit: boolean = false
+  answers: Answer[]
 
   constructor(
     private questionsenderService: QuestionSenderService,
@@ -20,13 +21,24 @@ answers: Answer[]
 
 
   ngOnInit() {
-    this.questionsService.$editableQuestion.subscribe(res => console.log(res))
+    if (this.edit) {
+      this.questionsenderService.question.id = this.questionsService.question.id
+    }
+  }
+
+  emptyQuestion() {
+    this.questionsenderService.emptyQuestion()
   }
 
   
 
-  stampaaschermo() {
+  submit(cond) {
+    if (cond) {
+    console.log(this.answers)
     this.questionsenderService.submit()
+  } else {
+    this.questionsenderService.update()
+  }
   }
 
 }

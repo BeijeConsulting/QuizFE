@@ -1,0 +1,21 @@
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: auto;
+  margin-top: 10px;
+}
+.btn.btn-secondary{
+  align-self: flex-start;
+  margin-bottom: 20px;
+}
+.dropdown-menu[x-placement=bottom-start] {
+  width: 30%;
+}
+.dropdown-item {
+  width:100%;
+}
+button#dropdownMenuButton {
+  white-space: unset;
+  box-shadow: 0 0 7px 1px #a2a2a2;
+}

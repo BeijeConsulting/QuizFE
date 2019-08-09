@@ -1,9 +1,8 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import { QuestionsService} from '../questions.service';
-import {Question} from '../mockquestions/question';
+import {Component, Input, OnInit, Output} from '@angular/core';
+import { QuestionsService } from '../questions.service';
 import { QuestionSenderService } from '../question-sender.service'
-import {Observable, Subject} from 'rxjs';
-import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
+import {Observable, Subject, Subscription} from 'rxjs';
+import {Question} from '../mockquestions/question'
 
 @Component({
   selector: 'app-addtag',
@@ -13,17 +12,23 @@ import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
 export class AddtagComponent implements OnInit {
   @Input() tagAdded;
+  @Input() edit = false
+  subscription: Subscription
   
   questions: Question[];
   newtags: string[] = [];
   tags: string[];
   searchedTags: string[];
-  
   constructor(private qs: QuestionsService,
-    private qss: QuestionSenderService) { }
+    private qss: QuestionSenderService) {
+     
+     }
 
   ngOnInit() {
     this.getTags();
+    if (this.edit) {
+      this.qs.question.tag.map(tag => this.newtags.push(tag))
+    }
   }
 
   getTags(): void {
@@ -36,14 +41,14 @@ export class AddtagComponent implements OnInit {
   }
   addNewTag(e: KeyboardEvent) {
     let newTag= this.tagAdded;
-   if (e.code === 'Space' || e.code === 'Enter') {
+    if (e.code === 'Space' || e.code === 'Enter') {
       newTag = newTag.replace(/[^a-z0-9]/gi,'');
-     if (newTag && !this.newtags.includes(newTag)) {
+      if (newTag && !this.newtags.includes(newTag)) {
         this.newtags.push(newTag);
         this.loadTag()
         this.getTags();
       }
-     this.tagAdded = '';
+      this.tagAdded = '';
     }
   }
 
@@ -63,6 +68,7 @@ export class AddtagComponent implements OnInit {
   loadTag() {
     this.qss.giveTag(this.newtags)
   }
+
 
 
 }

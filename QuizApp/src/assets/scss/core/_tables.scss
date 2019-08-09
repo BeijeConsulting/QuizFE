@@ -1,6 +1,5 @@
 .card.table {
-  margin: 35px;
-  width: 100%;
+  width: 95%;
   text-align: center;
 }
 
@@ -74,6 +73,11 @@
   > tbody > tr {
     position: relative;
   }
+}
+
+.tr-pointer {
+  cursor: pointer;
+  position: relative;
 }
 
 .table-shopping {

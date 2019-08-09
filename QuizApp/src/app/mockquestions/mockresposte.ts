@@ -8,23 +8,23 @@ export const COMPLETEDQUIZ: completedQuiz[] = [
     answersuser: [
       {
         id: 1,
-        answer: ["a"],
-        correct: ["a"]
+        answer: ["1"],
+        correct: ["1"]
       },
       {
         id: 2,
-        answer: ["c"],
-        correct: ["c"]
+        answer: ["3"],
+        correct: ["3"]
       },
       {
         id: 3,
-        answer: ["d"],
-        correct: ["a"]
+        answer: ["1"],
+        correct: ["1"]
       },
       {
         id: 4,
-        answer: ["c"],
-        correct: ["b"]
+        answer: ["2"],
+        correct: ["2"]
       }
     ]
   },
@@ -35,33 +35,60 @@ export const COMPLETEDQUIZ: completedQuiz[] = [
     answersuser: [
       {
         id: 5,
-        answer: ["a"],
-        correct: ["a"]
+        answer: ["2"],
+        correct: ["1"]
       },
       {
         id: 6,
-        answer: ["b"],
-        correct: ["b", "d"]
+        answer: ["2"],
+        correct: ["2", "4"]
       },
       {
         id: 7,
-        answer: ["a"],
-        correct: ["a"]
+        answer: ["1"],
+        correct: ["1"]
       },
       {
         id: 8,
-        answer: ["a"],
-        correct: ["a", "e"]
+        answer: ["1"],
+        correct: ["1", "5"]
       },
       {
         id: 9,
-        answer: ["a"],
-        correct: ["b"]
+        answer: ["3"],
+        correct: ["1"]
       },
       {
         id: 10,
-        answer: ["b"],
-        correct: ["b"]
+        answer: ["2"],
+        correct: ["2"]
+      }
+    ]
+  },
+  {
+    id: 3,
+    data: "08/08/2019",
+    tag: ["colori,animali"],
+    answersuser: [
+      {
+        id: 5,
+        answer: ["1"],
+        correct: ["1"]
+      },
+      {
+        id: 6,
+        answer: ["2", "4"],
+        correct: ["2", "4"]
+      },
+      {
+        id: 7,
+        answer: ["1"],
+        correct: ["1"]
+      },
+      {
+        id: 8,
+        answer: ["1"],
+        correct: ["1", "5"]
       }
     ]
   }
@@ -70,19 +97,19 @@ export const COMPLETEDQUIZ: completedQuiz[] = [
 // export const RISPOSTE: Risposte[] = [
 //   {
 //     id: 1,
-//     answers: ["a"]
+//     answers: ["1"]
 //   },
 //   {
 //     id: 2,
-//     answers: ["c"]
+//     answers: ["3"]
 //   },
 //   {
 //     id: 3,
-//     answers: ["d"]
+//     answers: ["4"]
 //   },
 //   {
 //     id: 4,
-//     answers: ["c"]
+//     answers: ["3"]
 //   },
 //   {
 //     id: 5,
@@ -90,11 +117,11 @@ export const COMPLETEDQUIZ: completedQuiz[] = [
 //   },
 //   {
 //     id: 6,
-//     answers: ["b"]
+//     answers: ["2"]
 //   },
 //   {
 //     id: 7,
-//     answers: ["b"]
+//     answers: ["2"]
 //   },
 //   {
 //     id: 8,
@@ -106,7 +133,7 @@ export const COMPLETEDQUIZ: completedQuiz[] = [
 //   },
 //   {
 //     id: 10,
-//     answers: ["c"]
+//     answers: ["3"]
 //   },
 //   {
 //     id: 11,
