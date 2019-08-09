@@ -33,7 +33,6 @@ export class AddtagComponent implements OnInit {
     if (this.tags) {
       this.searchedTags = this.tags.filter((el) => el.indexOf(this.tagAdded) !== -1);
     }
-    console.log(this.tagAdded)
   }
   addNewTag(e: KeyboardEvent) {
     let newTag= this.tagAdded;

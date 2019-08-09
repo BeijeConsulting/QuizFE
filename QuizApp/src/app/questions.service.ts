@@ -17,6 +17,8 @@ export class QuestionsService {
   questionsUrl = 'api/questions';
   tagsUrl = 'api/tags';
 
+  $editableQuestion: Observable<Question>; 
+
   constructor(private http: HttpClient) { }
 
   getQuestions(): Observable<Question[]> {
@@ -37,5 +39,11 @@ export class QuestionsService {
   deleteQuestion(question: Question): Observable<{}> {
     const url = this.questionsUrl + '/' + question.id;
     return this.http.delete(url, httpOptions)
+  }
+
+  updateQuestion(id: number): void {
+    
+    this.$editableQuestion = this.http.get<Question>(this.questionsUrl + '/' + id);
+
   }
 }

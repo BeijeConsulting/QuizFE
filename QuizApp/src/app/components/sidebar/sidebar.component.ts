@@ -61,7 +61,6 @@ export class SidebarComponent implements OnInit {
         this.menuItemsA = ROUTESA.filter(menuItemsA => menuItemsA);
         this.menuItemsU = ROUTESU.filter(menuItemsU => menuItemsU);
         this.route.params.subscribe(routeParams => {
-            console.log(routeParams)
         });
     }
     getLogin():boolean {

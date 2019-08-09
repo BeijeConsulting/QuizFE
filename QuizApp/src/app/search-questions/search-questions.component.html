@@ -21,3 +21,9 @@
     </li>
   </ul>
 </div>
+
+<button (click)='updateQuestion(1)'>UPDATE</button>
+
+<div *ngIf='edit'>
+  <app-new-question [miagolo]="edit"></app-new-question>
+</div>

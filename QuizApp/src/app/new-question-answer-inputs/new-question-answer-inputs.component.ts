@@ -26,6 +26,8 @@ export class NewQuestionAnswerInputsComponent implements OnInit {
     //   this.radio.push(false)
     //   this.check.push(false)
     }
+
+  
   
 
   addAnswer() {
@@ -43,8 +45,6 @@ export class NewQuestionAnswerInputsComponent implements OnInit {
     document.querySelectorAll("input[name='answer']").forEach(input => this.correct.push((<HTMLInputElement>input).checked))
     this.input = []
     document.querySelectorAll('input[name="input"]').forEach(input => this.input.push((<HTMLInputElement>input).value))
-    console.log(this.correct)
-    console.log(this.input)
     this.generateAnswer()
   }
 
@@ -63,47 +63,3 @@ export class NewQuestionAnswerInputsComponent implements OnInit {
 
 
 }
-
-
-
- 
-
-//   generateAnswer() {
-//     let corr: boolean[]
-//     console.log(this.answer)
-//     if (this.answer==='radio') {
-      
-//       corr = this.radio
-//     } else {
-//       corr = this.check
-//     }
-//     for(let a: number =0;a < this.input.length; a++) {
-//       let b = a.toString()
-//       console.log(this.value)
-//       if (this.value === 'a') {
-//         this.answers[a] = {
-//           value: this.alf[a],
-//           text: this.ans[a],       
-//           correct: corr[a]
-//         }
-//       } else {
-//         this.answers[a] = {
-//           value: b,
-//           text: this.ans[a],
-//           correct: corr[a]
-//         }
-//       }
-//     }
-    
-//     return this.answers
-//   }
-
-//   loadAnswers() {
-//     this.generateAnswer()
-//     this.qss.giveAnswers(this.answers)
-//   }
-
-//   update(ev, i) {
-//     this.ans[i] = ev
-//     this.loadAnswers()
-//   

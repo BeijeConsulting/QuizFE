@@ -34,14 +34,12 @@ export class CompletedDetailsComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get("id");
     this.risposteService.getQuiz(id).subscribe(quiz => {
       this.quiz = quiz;
-      console.log("quiz:", this.quiz);
     });
   }
   openDialog(id: number) {
     this.quest = " ";
     this.questionsService.getQuestion(id).subscribe(quest => {
       this.quest = quest;
-      console.log("quest:", this.quest);
     });
   }
   closeDialog() {

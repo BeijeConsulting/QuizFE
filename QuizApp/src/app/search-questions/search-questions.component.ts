@@ -9,6 +9,7 @@ import { SidebarService} from "../sidebar.service";
 })
 export class SearchQuestionsComponent implements OnInit {
   @Input() searchBarValue: string;
+  edit:boolean;
   questions: Question[];
   tags: string[];
   foundTags: string[];
@@ -25,9 +26,8 @@ export class SearchQuestionsComponent implements OnInit {
   }
 
   searchTags(): void {
-    this.searchBarValue.toLocaleLowerCase();
     this.foundTags = this.tags.filter(
-      t => (t.indexOf(this.searchBarValue) !== -1 && this.searchedTags.indexOf(t) === -1)
+      t => (t.indexOf(this.searchBarValue.toLocaleLowerCase()) !== -1 && this.searchedTags.indexOf(t) === -1)
     );
   }
 
@@ -54,7 +54,6 @@ export class SearchQuestionsComponent implements OnInit {
   deleteTag(tag: string){
     this.searchedTags = this.searchedTags.filter(t => t !== tag)
     if(this.searchedTags.length){
-      console.log(this.searchedTags)
       this.searchQuestions();
     }else {
       this.questions = []
@@ -63,5 +62,10 @@ export class SearchQuestionsComponent implements OnInit {
 
   getLogin() {
     return this.sidebarService.getLogin();
+  }
+
+  updateQuestion(id: number) {
+    this.edit = true;
+    this.questionService.updateQuestion(id);
   }
 }

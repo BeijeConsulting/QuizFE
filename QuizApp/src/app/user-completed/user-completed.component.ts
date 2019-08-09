@@ -35,7 +35,6 @@ export class UserCompletedComponent implements OnInit {
         count++;
       }
     });
-    console.log("Giuste: ", count, " Totale: ", quiz.answersuser.length);
     return count + "/" + quiz.answersuser.length;
   }
 }
