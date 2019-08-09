@@ -4,26 +4,24 @@
 }
 
 .MainContainer {
-  width: 80%;
+  width: 95%;
   margin: auto;
   background-color: #fff;
   border: none;
   border-radius: 8px;
-  margin-bottom: 100px;
-  box-shadow: -7px 0px 48px -30px black;
+  box-shadow: 0 0 7px 1px #a2a2a2;
+
 }
 .header{
-  margin-bottom: 8px;
-  background-color: #9c27b0 ;
-  border: none;
-  border-radius: 8px 8px 0px 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 0;
+  padding: 5px;
+  background-color: #9c27b0;
+  border-radius: 8px 8px 0 0;
 }
 .header__title {
   color: white;
   font-weight: bold;
+  text-align: center;
 }
 .middle-content {
   height: 50px;
@@ -36,41 +34,25 @@
   font-weight: bolder;
   padding-left:8px;
 }
-.InputText {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: calc(90% - 58px);
-}
-.InputText__Aggiunti {
-  position: relative;
-  display: flex;
-  height: 72%;
-  overflow: auto;
-}
+
 .InputText__InputField {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  position: relative;
 }
 .NuoviTags {
   display: flex;
-  flex-wrap: wrap;
-  position: absolute;
-  top: 0;
-  left: 10px;
+    flex-wrap: wrap;
+    padding: 10px;
+    min-height: 56px;
 }
 
 .NuoviTags > div {
   display: flex;
-  padding: 8px;
-  margin-right: 6px;
-  margin-bottom: 6px;
-  background-color: #4caf50;
-  color: #fff;
-  border-radius: 4px;
-  box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    padding: 3px 5px;
+    margin: 3px;
+    background-color: #4caf50;
+    color: #fff;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .NuoviTags > div > button {
@@ -83,25 +65,29 @@
 }
 
 input {
-  border: 1px solid lightgrey;
+  border: none;
+  border-top: 1px solid lightgrey;
   padding: 8px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
   width: 100%;
+  border-radius: 0 0 8px 8px;
 }
 
 .DefaultTags {
   list-style: none;
-  z-index: 20;
+  width: 90%;
+  margin: auto;
+  box-shadow: 0px 2px 7px -2px #a2a2a2;
+  border-radius: 0 0 10px 10px;
+    overflow: hidden;
 }
+
 
 .DefaultTags > li {
   padding: 6px;
   font-weight: 600;
-  width: 100%;
-  border-top: 1px solid grey;
   cursor: pointer;
   background-color: #fff;
+  margin: auto;
 }
 
 .DefaultTags > li:hover {
@@ -109,4 +95,9 @@ input {
   z-index: 20;
 }
 
-
+.ul-container {
+  width: 100%;
+  position: absolute;
+  top: 40px;
+  z-index: 1;
+}

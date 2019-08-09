@@ -75,7 +75,7 @@
     $underline-background-image: linear-gradient(
         to top,
         $label-color-focus 2px,
-        fade-out($label-color-focus, 1) 2px
+        fade-out($label-color-focus, 1) 0px
       ),
       linear-gradient(
         to top,

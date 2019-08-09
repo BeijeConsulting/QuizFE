@@ -1,7 +1,5 @@
-<button (click)="setEditor()" class="btn btn-primary btn-round">Toggle editor</button>
-<div *ngIf="editor" class="domandaeditor">
-  <textarea placeholder="Inserisci qui la tua domanda..." class="variable-textarea form-control" [(ngModel)]="markdown" (input)="send(markdown)"></textarea>
-</div>
-<div *ngIf="!editor" class="domandalive">
-  <markdown class="variable-binding" [data]="markdown"></markdown>
+<div class="domandaeditor">
+  <button (click)="setEditor()" class="btn btn-primary btn-round markdown">&lt;/&gt;</button>
+  <textarea  *ngIf="editor" placeholder="Inserisci qui la tua domanda..." class="variable-textarea form-control" [(ngModel)]="markdown" (input)="send(markdown)"></textarea>
+  <markdown  *ngIf="!editor" class="variable-binding" [data]="markdown"></markdown>
 </div>
