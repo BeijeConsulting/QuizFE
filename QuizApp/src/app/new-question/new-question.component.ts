@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuestionSenderService } from '../question-sender.service'
 import { Answer } from 'app/mockquestions/question';
 import {Input} from '@angular/core'
+import { QuestionsService } from '../questions.service'
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -14,12 +15,16 @@ export class NewQuestionComponent implements OnInit {
   answers: Answer[]
 
   constructor(
-    private questionsenderService: QuestionSenderService
+    private questionsenderService: QuestionSenderService,
+    private questionsService: QuestionsService
   ) {
       }
 
 
   ngOnInit() {
+    if (this.edit) {
+      this.questionsenderService.question.id = this.questionsService.question.id
+    }
   }
 
   emptyQuestion() {
@@ -28,9 +33,13 @@ export class NewQuestionComponent implements OnInit {
 
   
 
-  stampaaschermo() {
+  submit(cond) {
+    if (cond) {
     console.log(this.answers)
     this.questionsenderService.submit()
+  } else {
+    this.questionsenderService.update()
+  }
   }
 
 }

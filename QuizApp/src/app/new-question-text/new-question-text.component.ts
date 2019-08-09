@@ -29,6 +29,7 @@ send(text) {
   ngOnInit() {
     if (this.edit) {
       this.markdown = this.qs.question.text
+      this.send(this.markdown)
     }
   }
 

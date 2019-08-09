@@ -13,7 +13,7 @@ import { QuizService } from "app/quiz.service";
 export class SearchQuestionsComponent implements OnInit {
   @Input() searchBarValue: string;
   edit: boolean = false;
-  questions: Question[];
+  questions: Question[] = [];
   tags: string[];
   foundTags: string[];
   searchedTags: string[] = [];

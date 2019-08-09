@@ -35,8 +35,10 @@ export class NewQuestionAnswerInputsComponent implements OnInit {
       this.qs.question.answers.forEach(answer => {
         this.addAnswer()
         this.answers.push(answer)
-       console.log(answer.correct)
+        console.log(this.answers)
+        this.qss.giveAnswers(this.answers)
       })
+      
     }
 
     }
@@ -71,7 +73,7 @@ export class NewQuestionAnswerInputsComponent implements OnInit {
  
 
   generateAnswer() { 
-    this.answers = [] 
+    
     for(let i:number = 0; i < this.count.length; i++) {
       this.answers[i] = {
         value: i.toString(),

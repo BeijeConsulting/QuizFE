@@ -1,3 +1,5 @@
+<h2 class="center">Cerca domande</h2>
+
 <div class="search-container">
   <input [(ngModel)]='searchBarValue' type='text' (input)='searchTags()' (keyup)='addTag($event)'>
   <ul class="found-tags" *ngIf='searchBarValue'>
@@ -12,6 +14,44 @@
     <button (click)=deleteTag(tag)>x</button>
   </li>
 </ul>
+
+<div class="card table" *ngIf='getLogin() && questions.length > 0'>
+  <div class="card-header card-header-warning">
+    <h4 class="card-title">Domande </h4>
+    <p class="card-category">
+      Lista domandone
+    </p>
+  </div>
+  <div class="card-content table-responsive table-full-width">
+    <table class="table">
+      <thead class="text-danger">
+        <th>Domanda</th>
+        <th>Testo</th>
+        <th>Tags</th>
+        <th>Azioni</th>
+      </thead>
+      <tbody>
+        <tr class="tr-pointer" *ngFor="let question of questions">
+          <td>{{ question.id }}</td>
+          <td>{{ question.text }}</td>
+          <td>{{ question.tag }}</td>
+          <td><button type="button" rel="tooltip" class="btn btn-success btn-round btnpers" (click)="editQuestion(question)">
+            <i class="material-icons">edit</i>
+        </button>
+        <button type="button" (click)='deleteQuestion(question)' rel="tooltip" class="btn btn-danger btn-round btnpers">
+            <i class="material-icons">close</i>
+        </button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="edit">
+  <app-new-question [edit]="edit"></app-new-question>
+</div>
+
+<!-- 
 <div *ngIf='getLogin()'>
   <ul class='searched-questions' *ngIf="questions">
     <li *ngFor='let question of questions'>
@@ -25,4 +65,4 @@
 <div *ngIf="edit">
   <app-new-question [edit]="edit" ></app-new-question>
 </div>
-<br />
+<br /> -->

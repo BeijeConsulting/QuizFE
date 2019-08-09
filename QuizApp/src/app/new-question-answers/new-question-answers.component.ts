@@ -24,6 +24,7 @@ answervalue: string
     this.qss.giveAnswerType(this.answertype)
     if (this.edit) {
       this.answertype = this.qs.question.answertype
+      this.onChange(this.qs.question.answertype)
     }
   }
 

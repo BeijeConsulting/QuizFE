@@ -4,9 +4,9 @@
     <app-new-question-answers [edit]="edit"></app-new-question-answers>
     <div class="buttons-container">
         <button class="btn btn-danger" (click)="emptyQuestion()" routerLink="/admin">Annulla</button>
-        <button *ngIf="!edit; else mod" (click)="stampaaschermo()" class="btn btn-success">Aggiungi domanda</button>
+        <button *ngIf="!edit; else mod" (click)="submit(true)" class="btn btn-success">Aggiungi domanda</button>
         <ng-template #mod>
-                <button (click)="stampaaschermo()" class="btn btn-success">Modifica domanda</button>
+                <button (click)="submit(false)" class="btn btn-success">Modifica domanda</button>
         </ng-template>
        
     </div>

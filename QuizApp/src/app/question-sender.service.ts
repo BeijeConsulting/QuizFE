@@ -65,7 +65,7 @@ export class QuestionSenderService {
     this.$answers.next(answers)
   }
 
-  
+
 
   controllo() {
     let check = true
@@ -73,26 +73,30 @@ export class QuestionSenderService {
     this.getText().subscribe(text => this.question.text = text)
     this.getAnswerType().subscribe(answertype => this.question.answertype = answertype)
     this.getAnswers().subscribe(answers => this.question.answers = answers)
+    this.question.answertype === 'textarea' ? this.question.answers = [] : null
+    console.log(this.question.answers)
     this.question.tag.length === 0 ? check = false : check = true
     this.question.text === '' ? check = false : check = true
     this.question.answertype === '' ? check = false : check = true
     let checkanswer = false;
-for(let i=0; i < this.question.answers.length;i++) {
-  if (this.question.answers[i].text.length) {
-    console.log(this.question.answers[i].text.length)
-    if (this.question.answers[i].correct) {checkanswer = true}
-  } else {
-    checkanswer = false
-    break
-  }
-}
+    if (this.question.answertype !== 'textarea') {
+      for (let i = 0; i < this.question.answers.length; i++) {
+        if (this.question.answers[i].text.length) {
+          console.log(this.question.answers[i].text.length)
+          if (this.question.answers[i].correct) { checkanswer = true }
+        } else {
+          checkanswer = false
+          break
+        }
+      }
+    }
 
-    
-    if (!checkanswer) {check = false}
+
+    if (!checkanswer) { check = false }
 
     return check
   }
- 
+
 
   submit() {
     let check = this.controllo()
@@ -103,12 +107,27 @@ for(let i=0; i < this.question.answers.length;i++) {
     let ok = window.confirm('Carico la domanda?')
     if (ok === true) {
       this.fetch(this.question).subscribe(res => this.load())
-      // this.load().subscribe(res => console.log(res))
       this.emptyQuestion()
     } else {
       return
     }
   }
+
+  update() {
+    let check = this.controllo()
+    if (check === false) {
+      window.alert('Controlla i campi inseriti')
+      return
+    }
+    let ok = window.confirm('Carico la domanda?')
+    if (ok === true) {
+      this.fetchUpdate(this.question).subscribe(res => this.load())
+      this.emptyQuestion()
+    } else {
+      return
+    }
+  }
+
 
   emptyQuestion() {
     this.question = {
@@ -119,6 +138,16 @@ for(let i=0; i < this.question.answers.length;i++) {
       answers: [],
     }
     console.log(this.question)
+  }
+
+  fetchUpdate(question: Question): Observable<Question> {
+    const questionurl = `api/questions/${this.question.id}`
+    const httpHeader = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json'
+      })
+    }
+    return this.http.put<Question>(questionurl, question, httpHeader)
   }
 
   fetch(question: Question): Observable<Question> {
@@ -132,7 +161,7 @@ for(let i=0; i < this.question.answers.length;i++) {
   }
 
   load(): void {
-     this.http.get<Question[]>('api/questions').subscribe(res => console.log(res));
+    this.http.get<Question[]>('api/questions').subscribe(res => console.log(res));
   }
 
 }
