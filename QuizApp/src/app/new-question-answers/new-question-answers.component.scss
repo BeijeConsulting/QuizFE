@@ -1,0 +1,24 @@
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin-left: 32px;
+}
+.btn.btn-secondary{
+  align-self: flex-start;
+  margin: 32px;
+  width: 30%;
+}
+.dropdown-menu[x-placement=bottom-start] {
+  width: 30%;
+}
+.dropdown-item {
+  width:100%;
+}
+button#dropdownMenuButton {
+  white-space: unset;
+}
+.prova {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionSenderService } from '../question-sender.service'
 import { Answer } from 'app/mockquestions/question';
+import {Input} from '@angular/core'
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -9,11 +10,11 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./new-question.component.scss']
 })
 export class NewQuestionComponent implements OnInit {
-answers: Answer[]
+@Input() edit: boolean = false
+  answers: Answer[]
 
   constructor(
-    private questionsenderService: QuestionSenderService,
-    
+    private questionsenderService: QuestionSenderService
   ) {
       }
 

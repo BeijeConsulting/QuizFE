@@ -18,63 +18,63 @@ import { UserQuizComponent } from "../../user-quiz/user-quiz.component";
 import { CompletedDetailsComponent } from "../../completed-details/completed-details.component";
 
 export const AdminLayoutRoutes: Routes = [
-    // {
-    //   path: '',
-    //   children: [ {
-    //     path: 'dashboard',
-    //     component: DashboardComponent
-    // }]}, {
-    // path: '',
-    // children: [ {
-    //   path: 'userprofile',
-    //   component: UserProfileComponent
-    // }]
-    // }, {
-    //   path: '',
-    //   children: [ {
-    //     path: 'icons',
-    //     component: IconsComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'notifications',
-    //         component: NotificationsComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'maps',
-    //         component: MapsComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'typography',
-    //         component: TypographyComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'upgrade',
-    //         component: UpgradeComponent
-    //     }]
-    // }
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'table-list',     component: TableListComponent },
-    { path: 'typography',     component: TypographyComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
-    { path: 'notifications',  component: NotificationsComponent },
-    { path: 'upgrade',        component: UpgradeComponent },
-    { path: 'login',          component: LoginComponent },
-    { path: 'admin', component: AdminComponent },
-    { path: 'admin/new', component: NewQuestionComponent},
-    { path: 'user', component: UserComponent},
-    { path: 'user/active', component: UserActiveComponent},
-    { path: 'user/completed', component: UserCompletedComponent},
-    { path: "user/completed/:id", component: CompletedDetailsComponent },
-    { path: 'user/quiz', component: UserQuizComponent},
-    { path: 'user/quiz/:id', component: UserQuizComponent }
+  // {
+  //   path: '',
+  //   children: [ {
+  //     path: 'dashboard',
+  //     component: DashboardComponent
+  // }]}, {
+  // path: '',
+  // children: [ {
+  //   path: 'userprofile',
+  //   component: UserProfileComponent
+  // }]
+  // }, {
+  //   path: '',
+  //   children: [ {
+  //     path: 'icons',
+  //     component: IconsComponent
+  //     }]
+  // }, {
+  //     path: '',
+  //     children: [ {
+  //         path: 'notifications',
+  //         component: NotificationsComponent
+  //     }]
+  // }, {
+  //     path: '',
+  //     children: [ {
+  //         path: 'maps',
+  //         component: MapsComponent
+  //     }]
+  // }, {
+  //     path: '',
+  //     children: [ {
+  //         path: 'typography',
+  //         component: TypographyComponent
+  //     }]
+  // }, {
+  //     path: '',
+  //     children: [ {
+  //         path: 'upgrade',
+  //         component: UpgradeComponent
+  //     }]
+  // }
+  { path: "dashboard", component: DashboardComponent },
+  { path: "user-profile", component: UserProfileComponent },
+  { path: "table-list", component: TableListComponent },
+  { path: "typography", component: TypographyComponent },
+  { path: "icons", component: IconsComponent },
+  { path: "maps", component: MapsComponent },
+  { path: "notifications", component: NotificationsComponent },
+  { path: "upgrade", component: UpgradeComponent },
+  { path: "login", component: LoginComponent },
+  { path: "admin", component: AdminComponent },
+  { path: "admin/new", component: NewQuestionComponent },
+  { path: "user", component: UserComponent },
+  { path: "user/active", component: UserActiveComponent },
+  { path: "user/completed", component: UserCompletedComponent },
+  { path: "user/completed/:id", component: CompletedDetailsComponent },
+  { path: "user/quiz", component: UserQuizComponent },
+  { path: "user/quiz/:id", component: UserQuizComponent }
 ];

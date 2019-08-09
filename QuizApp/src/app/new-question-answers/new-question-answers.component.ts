@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { QuestionSenderService } from '../question-sender.service'
+import { QuestionsService } from '../questions.service'
 
 @Component({
   selector: 'app-new-question-answers',
@@ -7,18 +8,23 @@ import { QuestionSenderService } from '../question-sender.service'
   styleUrls: ['./new-question-answers.component.scss']
 })
 export class NewQuestionAnswersComponent implements OnInit {
+@Input() edit
 answertype: string = 'radio'
 answerdef: string = 'Risposta singola'
 answervalue: string
 
   constructor(
-    private qss: QuestionSenderService
+    private qss: QuestionSenderService,
+    private qs: QuestionsService
   ) { }
 
 
 
   ngOnInit() {
     this.qss.giveAnswerType(this.answertype)
+    if (this.edit) {
+      this.answertype = this.qs.question.answertype
+    }
   }
 
 onChange(val: string): void {

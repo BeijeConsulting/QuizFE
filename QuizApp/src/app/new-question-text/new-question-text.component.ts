@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { QuestionSenderService } from '../question-sender.service'
+import { QuestionsService } from '../questions.service'
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -8,10 +9,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./new-question-text.component.scss']
 })
 export class NewQuestionTextComponent implements OnInit {
+  @Input() edit
+  @Input() markdown
   editor: boolean = true
   subscription: Subscription
   constructor(
     private qss: QuestionSenderService,
+    private qs: QuestionsService
   ) {
    }
 
@@ -23,6 +27,9 @@ send(text) {
 }
 
   ngOnInit() {
+    if (this.edit) {
+      this.markdown = this.qs.question.text
+    }
   }
 
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormArray } from '@angular/forms';
 import { QuestionSenderService } from '../question-sender.service'
 import { Answer } from 'app/mockquestions/question';
-import { count } from 'rxjs/operators';
+import { QuestionsService } from '../questions.service'
 import { Subscription } from 'rxjs';
 
 
@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./new-question-answer-inputs.component.scss']
 })
 export class NewQuestionAnswerInputsComponent implements OnInit {
+  @Input() edit
   count = [0,1]
 
   contatore: number = 1
@@ -21,13 +22,29 @@ export class NewQuestionAnswerInputsComponent implements OnInit {
   subscription: Subscription
 
   constructor(private fb: FormBuilder,
-    private qss: QuestionSenderService) {
+    private qss: QuestionSenderService,
+    private qs: QuestionsService) {
 
      }
   @Input() answer: string
   @Input() value: string
   ngOnInit() {
+    if (this.edit) {
+      this.count = []
+      this.contatore = -1
+      this.qs.question.answers.forEach(answer => {
+        this.addAnswer()
+        this.answers.push(answer)
+       console.log(answer.correct)
+      })
+    }
 
+    }
+
+    getcheck(count) {
+      if (this.edit) {
+        return this.answers[count].correct
+      } else {return false}
     }
   
 
@@ -35,7 +52,7 @@ export class NewQuestionAnswerInputsComponent implements OnInit {
     this.contatore++
     this.count.push(this.contatore)
     
-    this.addToArray()
+    !this.edit ? this.addToArray() : null
   } 
   delInput(i) {
     this.count = this.count.filter(item => item !== i)

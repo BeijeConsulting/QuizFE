@@ -55,4 +55,19 @@ export class UserQuizComponent implements OnInit {
   clear(){
     this.quizService.clear();
   }
+  getFirstQuestion(id){
+    return this.quizService.getFirstQuest()===id; 
+  }
+  getLastQuestion(id){
+    return this.quizService.getLastQuest()===id;
+  }
+  getNextQuestion(quest){
+    return this.quizService.getNextQuest(quest)
+  }
+  getPrevQuestion(quest){
+    return this.quizService.getPrevQuest(quest)
+  }
+  getFirst(){
+    return this.quizService.getFirstQuest()
+  }
 }

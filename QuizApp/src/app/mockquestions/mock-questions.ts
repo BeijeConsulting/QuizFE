@@ -8,22 +8,22 @@ export const QUESTIONS: Question[] = [
     answertype: "radio",
     answers: [
       {
-        value: "a",
+        value: "1",
         text: "bianco",
         correct: true
       },
       {
-        value: "b",
+        value: "2",
         text: "rosso",
         correct: false
       },
       {
-        value: "c",
+        value: "3",
         text: "blu",
         correct: false
       },
       {
-        value: "d",
+        value: "4",
         text: "nero",
         correct: false
       }
@@ -36,22 +36,22 @@ export const QUESTIONS: Question[] = [
     answertype: "radio",
     answers: [
       {
-        value: "a",
+        value: "1",
         text: "giallo",
         correct: false
       },
       {
-        value: "b",
+        value: "2",
         text: "bianco",
         correct: false
       },
       {
-        value: "c",
+        value: "3",
         text: "trasparente",
         correct: true
       },
       {
-        value: "d",
+        value: "4",
         text: "nero",
         correct: false
       }
@@ -64,22 +64,22 @@ export const QUESTIONS: Question[] = [
     answertype: "radio",
     answers: [
       {
-        value: "a",
+        value: "1",
         text: "4",
         correct: true
       },
       {
-        value: "b",
+        value: "2",
         text: "32",
         correct: false
       },
       {
-        value: "c",
+        value: "3",
         text: "8",
         correct: false
       },
       {
-        value: "d",
+        value: "4",
         text: "0",
         correct: false
       }
@@ -92,22 +92,22 @@ export const QUESTIONS: Question[] = [
     answertype: "radio",
     answers: [
       {
-        value: "a",
+        value: "1",
         text: "2000 m",
         correct: false
       },
       {
-        value: "b",
+        value: "2",
         text: "4696 m",
         correct: true
       },
       {
-        value: "c",
+        value: "3",
         text: "300 cm",
         correct: false
       },
       {
-        value: "d",
+        value: "4",
         text: "nero",
         correct: false
       }
@@ -120,12 +120,12 @@ export const QUESTIONS: Question[] = [
     answertype: "radio",
     answers: [
       {
-        value: "a",
+        value: "1",
         text: "sì",
         correct: true
       },
       {
-        value: "b",
+        value: "2",
         text: "no",
         correct: false
       }
@@ -138,22 +138,22 @@ export const QUESTIONS: Question[] = [
     answertype: "checkbox",
     answers: [
       {
-        value: "a",
+        value: "1",
         text: "perchè sì",
         correct: false
       },
       {
-        value: "b",
+        value: "2",
         text: "perchè Gesù piange",
         correct: true
       },
       {
-        value: "c",
+        value: "3",
         text: "perchè sotto c'è Fantozzi",
         correct: false
       },
       {
-        value: "d",
+        value: "4",
         text: "perché le nuvole si scontrano",
         correct: true
       }
@@ -166,17 +166,17 @@ export const QUESTIONS: Question[] = [
     answertype: "radio",
     answers: [
       {
-        value: "a",
+        value: "1",
         text: "sì",
         correct: true
       },
       {
-        value: "b",
+        value: "2",
         text: "no",
         correct: false
       },
       {
-        value: "c",
+        value: "3",
         text: "forse",
         correct: false
       }
@@ -189,27 +189,27 @@ export const QUESTIONS: Question[] = [
     answertype: "checkbox",
     answers: [
       {
-        value: "a",
+        value: "1",
         text: "verde",
         correct: true
       },
       {
-        value: "b",
+        value: "2",
         text: "rosso",
         correct: false
       },
       {
-        value: "c",
+        value: "3",
         text: "blu",
         correct: false
       },
       {
-        value: "d",
+        value: "4",
         text: "nero",
         correct: false
       },
       {
-        value: "e",
+        value: "5",
         text: "giallo",
         correct: true
       }
@@ -222,22 +222,22 @@ export const QUESTIONS: Question[] = [
     answertype: "radio",
     answers: [
       {
-        value: "a",
+        value: "1",
         text: "Thomas",
         correct: false
       },
       {
-        value: "b",
+        value: "2",
         text: "Alessia Marcuzzi",
         correct: true
       },
       {
-        value: "c",
+        value: "3",
         text: "Maria De Filippi",
         correct: false
       },
       {
-        value: "d",
+        value: "4",
         text: "Maurizio Costanzo",
         correct: false
       }
@@ -250,22 +250,22 @@ export const QUESTIONS: Question[] = [
     answertype: "checkbox",
     answers: [
       {
-        value: "a",
+        value: "1",
         text: "verde",
         correct: false
       },
       {
-        value: "b",
+        value: "2",
         text: "indefinito",
         correct: true
       },
       {
-        value: "c",
+        value: "3",
         text: "trasparente",
         correct: false
       },
       {
-        value: "d",
+        value: "4",
         text: "nero",
         correct: false
       }
