@@ -64,10 +64,16 @@ export class SidebarComponent implements OnInit {
         this.quiz=true;
         this.menuItemsQ = this.quizService.getQuestions();     
     }
+    getSend(){
+        return this.quizService.getSend();     
+    }
     clearQuiz(){
         this.quiz=false;
         this.menuItemsQ = [];
         this.quizService.clearQuiz();        
+    }
+    getResult(id:number){
+        return this.quizService.getResult(id);
     }
     getLogin():boolean {
         this.admin = this.sidebarservice.getLogin()

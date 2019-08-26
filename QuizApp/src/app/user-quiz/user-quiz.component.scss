@@ -1,0 +1,44 @@
+.stats-box {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    background: white;
+    left: 0;
+}
+.send{
+    margin-top:64px;
+}
+.form-check.correct .form-check-sign:before {
+    margin-top: 12px;
+}
+.form-check.correct {
+    background: green;
+    border-radius: 10px;
+}
+.form-check.correct>label {
+    color: white;
+    padding-top: 12px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.correct .form-check-label {
+    .circle,.check{
+        opacity: 1!important;
+        border-color: white!important;
+        margin-top: 12px;
+        .check {
+            margin-top: 0!important;
+        }
+    }
+}
+.form-check {
+    padding-left: 10px;
+}
+.correct .form-check-label .circle span {
+    background: white!important;
+}

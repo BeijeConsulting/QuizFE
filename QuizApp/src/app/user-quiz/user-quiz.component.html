@@ -1,5 +1,6 @@
 <div class="main-content-quiz">
   <div class="container-fluid">
+    <div class="stats-box" *ngIf="getSend()">Risposte corrette {{getResults()}} / {{getTotQuestions()}} </div>
     <div class="row">
       <div class="questionBox" *ngIf="!question">
         <div class="question">
@@ -9,24 +10,28 @@
           <button class="btn btn-success" routerLink="/user/quiz/{{getFirst()}}">INIZIA IL QUIZ</button>
         </div>
       </div>
-      <div class="questionBox" *ngIf="question">
+      <div [attr.class]="getSend() ? 'questionBox send' : 'questionBox'" *ngIf="question">
         <div class="question">
           {{question.text}}
         </div>
         <div *ngIf="question.answertype==='checkbox'" class="checkInfo">(*più risposte sono corrette)</div>
         <div class="answer">
-          <div *ngFor="let answer of question.answers;" [attr.class]="question.answertype==='checkbox' ? 'form-check' : 'form-check form-check-radio'">
-            <label class="form-check-label">
-              <input class="form-check-input" [attr.type]="question.answertype" (change)="addAnswer(question.id)" type="radio" name="answer"
-                value="{{answer.value}}" [attr.checked]="getAnswer(question.id,answer.value) ? 'checked':null" />
+          <div *ngFor="let answer of question.answers;">
+            <div [attr.class]="getCorrectAnswer(question.answertype,answer.correct)">
+              <label class="form-check-label">
+                <input class="form-check-input" [attr.type]="question.answertype" (change)="addAnswer(question.id)"
+                  name="answer" value="{{answer.value}}"
+                  [attr.checked]="getAnswer(question.id,answer.value) ? 'checked':null"
+                  [attr.disabled]="getSend() ? 'disabled':null" />
                 <span [attr.class]="question.answertype==='checkbox' ? 'form-check-sign' : 'circle'">
                   <span class="check"></span>
                 </span>
-              <div class="span-check">{{answer.text}}</div>
-            </label>
+                <div class="span-check">{{answer.text}}</div>
+              </label>
+            </div>
           </div>
           <textarea *ngIf="question.answertype==='textarea'" id="textarea" (input)="addAnswerArea(question.id)"
-            name="textarea" rows="10" cols="50"
+            name="textarea" [attr.disabled]="getSend() ? 'disabled':null" rows="10" cols="50"
             placeholder="Inserisci qui la tua risposta...">{{getDefaultArea(question.id)}}</textarea>
         </div>
         <div class="button-quiz">
@@ -44,7 +49,7 @@
             </div>
           </div>
         </div>
-        <div class="button-submit">
+        <div class="button-submit" *ngIf="!getSend()">
           <button *ngIf="getLastQuestion(question.id)" class="btn btn-success" (click)="clear()">INVIA
             QUIZ</button>
         </div>
