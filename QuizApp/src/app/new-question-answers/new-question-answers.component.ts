@@ -9,6 +9,7 @@ import { QuestionsService } from '../questions.service'
 })
 export class NewQuestionAnswersComponent implements OnInit {
 @Input() edit
+@Input() answererr = false 
 answertype: string = 'radio'
 answerdef: string = 'Risposta singola'
 answervalue: string
@@ -22,6 +23,7 @@ answervalue: string
 
   ngOnInit() {
     this.qss.giveAnswerType(this.answertype)
+    this.qss.changeanswer.subscribe(err => {this.answererr = err})
     if (this.edit) {
       this.answertype = this.qs.question.answertype
       this.onChange(this.qs.question.answertype)

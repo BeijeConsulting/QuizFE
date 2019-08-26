@@ -1,5 +1,6 @@
+<p *ngIf="texterr" class="errortext">Inserisci un testo valido!!</p>
 <div class="domandaeditor">
   <button (click)="setEditor()" class="btn btn-primary btn-round markdown">&lt;/&gt;</button>
-  <textarea  *ngIf="editor" placeholder="Inserisci qui la tua domanda..." class="variable-textarea form-control" [(ngModel)]="markdown" (input)="send(markdown)"></textarea>
+  <textarea  *ngIf="editor" placeholder="Inserisci qui la tua domanda..." class="variable-textarea form-control" [attr.class]="texterr === true ? 'variable-textarea form-control error' : 'variable-textarea form-control'" [(ngModel)]="markdown" (input)="send(markdown)" [attr.class]=""></textarea>
   <markdown  *ngIf="!editor" class="variable-binding" [data]="markdown"></markdown>
 </div>

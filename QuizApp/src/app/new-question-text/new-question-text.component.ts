@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class NewQuestionTextComponent implements OnInit {
   @Input() edit
   @Input() markdown
+  @Input() texterr
   editor: boolean = true
   subscription: Subscription
   constructor(
@@ -27,6 +28,7 @@ send(text) {
 }
 
   ngOnInit() {
+    this.qss.changetext.subscribe(err => {this.texterr = err})
     if (this.edit) {
       this.markdown = this.qs.question.text
       this.send(this.markdown)

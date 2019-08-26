@@ -13,7 +13,7 @@
     <app-new-question-answer-inputs [answer]="answertype"></app-new-question-answer-inputs>
   </ng-template>
 </div> -->
-
+<p *ngIf="answererr" class="errortext">Controlla le risposte inserite!!</p>
 <div class="dropdown">
 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   {{answerdef}}
