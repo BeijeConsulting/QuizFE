@@ -13,6 +13,7 @@ import {Question} from '../mockquestions/question'
 export class AddtagComponent implements OnInit {
   @Input() tagAdded;
   @Input() edit = false
+  @Input() tagerror = false
   subscription: Subscription
   
   questions: Question[];
@@ -26,6 +27,7 @@ export class AddtagComponent implements OnInit {
 
   ngOnInit() {
     this.getTags();
+    this.qss.changetag.subscribe(tagerr => {this.tagerror = tagerr})
     if (this.edit) {
       this.qs.question.tag.map(tag => this.newtags.push(tag))
     }
@@ -67,6 +69,7 @@ export class AddtagComponent implements OnInit {
   }
 
   loadTag() {
+    console.log(this.newtags)
     this.qss.giveTag(this.newtags)
   }
 

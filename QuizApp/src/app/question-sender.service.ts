@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Answer, Question } from './mockquestions/question';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Output, EventEmitter } from '@angular/core'
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,9 @@ export class QuestionSenderService {
   $textarea = new BehaviorSubject<string>('');
   $answertype = new BehaviorSubject<string>('');
   $answers = new BehaviorSubject<Answer[]>([{ value: '', text: '', correct: null }])
-
+  @Output() changetag: EventEmitter<boolean> = new EventEmitter()
+  @Output() changetext: EventEmitter<boolean> = new EventEmitter()
+  @Output() changeanswer: EventEmitter<boolean> = new EventEmitter()
   constructor(
     private http: HttpClient
   ) { }
@@ -74,18 +77,29 @@ export class QuestionSenderService {
     this.getAnswerType().subscribe(answertype => this.question.answertype = answertype)
     this.getAnswers().subscribe(answers => this.question.answers = answers)
     this.question.answertype === 'textarea' ? this.question.answers = [] : null
-    console.log(this.question.answers)
-    this.question.tag.length === 0 ? check = false : check = true
-    this.question.text === '' ? check = false : check = true
+    if (this.question.tag[0].length === 0) {
+      this.changetag.emit(true)
+      console.log('viva la liturgia')
+      check = false
+    }
+    if (this.question.text === '') {
+      this.changetext.emit(true)
+      check = false
+    }
+    
     this.question.answertype === '' ? check = false : check = true
     let checkanswer = false;
     if (this.question.answertype !== 'textarea') {
       for (let i = 0; i < this.question.answers.length; i++) {
         if (this.question.answers[i].text.length) {
           console.log(this.question.answers[i].text.length)
-          if (this.question.answers[i].correct) { checkanswer = true }
+          if (this.question.answers[i].correct) { 
+            checkanswer = true
+            
+          }
         } else {
           checkanswer = false
+          this.changeanswer.emit(true)
           break
         }
       }
